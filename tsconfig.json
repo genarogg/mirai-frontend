@@ -1,6 +1,10 @@
 {
   "compilerOptions": {
-    "lib": ["dom", "dom.iterable", "esnext"],
+    "lib": [
+      "dom",
+      "dom.iterable",
+      "esnext"
+    ],
     "allowJs": true,
     "skipLibCheck": true,
     "strict": true,
@@ -18,9 +22,28 @@
       }
     ],
     "paths": {
-      "@/*": ["./src/*"]
+      "@components/*": [
+        "./src/components/*"
+      ],
+      "@fn/*": [
+        "./src/functions/*"
+      ],
+      "@env": [
+        "./env.ts"
+      ],
+      "@public/*": [
+        "./public/*"
+      ]
     }
   },
-  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts"],
-  "exclude": ["node_modules"]
+  "include": [
+    "next-env.d.ts",
+    "**/*.ts",
+    "**/*.tsx",
+    ".next/types/**/*.ts",
+    "aggPath.js"
+  ],
+  "exclude": [
+    "node_modules"
+  ]
 }
