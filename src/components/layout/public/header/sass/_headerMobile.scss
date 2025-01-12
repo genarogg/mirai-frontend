@@ -1,0 +1,219 @@
+@use "/src/sass/global/variables" as var;
+@use "/src/sass/global/mixin" as fn;
+
+.headerMovile {
+    nav {
+        ul.container {
+            display: grid;
+
+            height: 60px;
+            align-items: center;
+            padding: 0 10px;
+
+            grid-template-columns: 1fr 1fr 1fr;
+
+            li {
+
+
+
+                .btnHamburguesa {
+                    span {
+                        background-color: #fff;
+                    }
+                }
+
+                .logo {
+                    display: flex;
+                    justify-content: center;
+
+                    a {
+                        display: flex;
+                        width: 180px;
+
+                        svg {
+                            color: var.$color-secondary;
+                        }
+                    }
+                }
+
+                .btn-mobile {
+                    ul {
+                        width: 100%;
+                        //display: grid;
+                        //grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+                        align-items: center;
+                        gap: 20px;
+                        display: flex;
+
+
+                        &.left {
+                            justify-content: flex-start;
+                        }
+
+                        &.right {
+                            justify-content: flex-end;
+                        }
+
+                        li {
+                            width: 30px;
+                            height: 30px;
+
+                            display: flex;
+                            justify-content: center;
+                            align-items: center;
+
+
+                            .icon {
+                                font-size: 22px;
+                                color: #fff;
+
+                                display: flex;
+                                justify-content: center;
+                                align-items: center;
+                                transition: all ease 600ms;
+
+                                &:hover {
+                                    color: var.$color-secondary;
+                                }
+
+
+
+                            }
+
+
+                            .btn-normal-basic {
+                                &.active {
+                                    svg {
+                                        color: var.$color-secondary;
+                                    }
+                                }
+
+                                button {
+                                    background-color: transparent;
+
+                                    :hover,
+                                    :focus {
+
+
+                                        svg {
+                                            color: var.$color-secondary;
+                                        }
+                                    }
+
+
+                                }
+                            }
+                        }
+                    }
+
+
+                }
+
+                .mobileSearch {
+                    position: fixed;
+                    right: -100%;
+                    min-width: 360px;
+                    height: 100vh;
+                    background-color: #282828;
+                    transition: 600ms all ease;
+                    z-index: 1000;
+
+                    &.active {
+                        right: 0;
+                    }
+
+                    .algolia {
+                        top: 25px;
+                    }
+                }
+            }
+
+            .mobileCategoria {
+                position: fixed;
+                left: -100%;
+                min-width: 360px;
+                height: 100vh;
+                background-color: #282828;
+                transition: 600ms all ease;
+                z-index: 1000;
+
+                &.active {
+                    left: 0;
+                }
+            }
+        }
+    }
+
+    .hidden-xs {
+        display: none !important;
+    }
+
+    .mobileSearch {
+        position: fixed;
+        right: -100%;
+        min-width: 360px;
+        height: 100vh;
+        background-color: #282828;
+        transition: 600ms all ease;
+        z-index: 1000;
+
+        &.active {
+            right: 0;
+        }
+
+        .algolia {
+            top: 25px;
+        }
+    }
+
+    .mobileCategoria {
+        position: fixed;
+        left: -100%;
+        min-width: 360px;
+        height: 100vh;
+        background-color: #282828;
+        transition: 600ms all ease;
+        z-index: 1000;
+
+        &.active {
+            left: 0;
+        }
+    }
+
+
+    .containerCategoria {
+        grid-template-columns: 1fr !important;
+    }
+}
+
+@include fn.between(600px, 1024px) {
+    .headerMovile {
+        nav {
+            ul.container {
+                padding: 0 20px;
+            }
+        }
+
+        .hidden-xs {
+            display: flex !important;
+        }
+    }
+
+
+}
+
+@include fn.max-width(900px) {
+    .headerMovile nav ul.container li .logo {
+        a {
+            width: 160px;
+        }
+    }
+}
+
+@include fn.max-width(700px) {
+    .headerMovile nav ul.container li .logo {
+        a {
+            width: 140px;
+        }
+    }
+}

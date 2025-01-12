@@ -1,0 +1,66 @@
+@use "/src/sass/global/variables" as var;
+/* 
+    stylelos para el  padre
+    height: 40px;
+    position: relative;
+*/
+
+.algoliaSearch {
+
+    @include var.colorScheme();
+    position: relative;
+    max-width: 600px;
+    position: absolute;
+    background-color: #fff;
+    overflow: hidden;
+    height: auto;
+    border-radius: 20px;
+
+    input {
+        border: none;
+        outline: none;
+        background-color: transparent;
+    }
+
+    h3 {
+        font-size: 14px;
+
+    }
+
+    .algoliaBox {
+        display: flex;
+        align-items: center;
+        background-color: #fff;
+
+        &.notHover{
+            &:hover {
+                background-color: transparent;
+            }
+        }
+
+        &.title {
+            background-color: #eee;
+        }
+
+        &:hover {
+            background-color: #eee;
+        }
+
+
+        .boxOne {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 42px;
+            height: 30px;
+            color: #aaa;
+        }
+
+        .boxTwo {
+            width: 100%;
+            height: 36px;
+            display: flex;
+            align-items: center;
+        }
+    }
+}

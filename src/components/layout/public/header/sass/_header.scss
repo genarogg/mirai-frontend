@@ -1,0 +1,35 @@
+@use "./headerUp";
+@use "./headerDown";
+@use "./headerMobile";
+@use "/src/sass/global/variables" as var;
+
+.header nav ul span {
+
+    transition: var.$transition;
+
+    &:hover {
+        color: var.$color-secondary !important;
+    }
+}
+
+@media screen and (max-width: 1024px) {
+    .header {
+        height: 60px;
+    }
+
+    .headerUp {
+        display: none;
+    }
+}
+
+@media screen and (min-width: 1024px) {
+
+    .header {
+        height: 100px;
+    }
+
+    .headerMovile {
+        display: none;
+    }
+
+}

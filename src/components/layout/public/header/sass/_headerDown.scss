@@ -1,0 +1,376 @@
+@use "/src/sass/global/variables" as var;
+
+.headerDown {
+    display: flex;
+    justify-content: center;
+
+    nav {
+        ul {
+            li {
+                cursor: pointer;
+
+                a {
+                    .container-icono {
+                        margin: 0 5px 0 25px;
+
+
+                        .icon {
+
+                            color: #fff;
+                        }
+                    }
+
+                    label {
+                        color: #fff;
+                    }
+                }
+            }
+        }
+    }
+}
+
+.navToolTip {
+    ::-webkit-scrollbar {
+        width: 6px;
+    }
+
+    ::-webkit-scrollbar-track {
+        background: #fff;
+    }
+
+    ::-webkit-scrollbar-thumb {
+        background: #eee;
+        border-radius: 5px;
+    }
+
+    >ul {
+        width: 100%;
+        display: flex;
+        justify-content: center;
+
+        li {
+            margin: 0 10px;
+        }
+    }
+
+    ul {
+
+        li {
+
+            .container-menu-tooltip {
+                height: 30px;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+
+
+                //titulo
+                span {
+
+                    h6 {
+                        font-size: 14px;
+                        display: flex;
+
+                        label {
+                            cursor: pointer;
+                        }
+
+                        .icon {
+                            position: relative;
+                            // top: 3px;
+                            margin-left: 2px;
+                        }
+                    }
+                }
+
+                //tooltip
+                >div {
+                    // @include border(blue);
+
+                    width: 100%;
+                    transform: translate(0px, 100px) !important;
+                    background-color: #fff;
+                    padding: 10px 20px;
+                    max-width: 100%;
+
+                    .tooltip {
+                        background-color: transparent;
+                        color: #000;
+                        max-width: 100% !important;
+                        width: 100%;
+                        height: 410px;
+                        overflow: auto;
+
+                        .tippy-content {
+                            padding: 0;
+                            width: 100%;
+                            display: flex;
+                            justify-content: center;
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    // contendido
+    .tippy-content {
+
+
+
+        // contenedor del contenido
+        &>div {
+            width: 100%;
+            display: flex;
+            justify-content: center;
+            cursor: initial;
+
+
+        }
+    }
+}
+
+.header {
+    .containerCategoria {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        justify-items: center;
+        width: 100%;
+        max-width: 1600px;
+        justify-content: center;
+        gap: 50px;
+
+        overflow-x: hidden;
+
+        .containerLeft {
+            position: relative;
+            width: 400px;
+            height: 400px;
+
+
+            >div {
+                position: fixed !important;
+            }
+        }
+
+        .categorias {
+            // @include border(blue);
+            display: grid;
+            gap: 20px 40px;
+
+            grid-template-columns: 1fr 1fr;
+
+            .subCategoria {
+
+
+                h5 {
+                    font-size: 18px;
+                    margin: 0 0 20px 10px;
+                    //text-transform: uppercase;
+                }
+
+                nav {
+                    ul {
+                        display: grid;
+                        /* grid-auto-columns: auto; */
+                        grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+                        grid-gap: 10px;
+                        gap: 10px;
+
+
+                        li {
+                            margin: 0 10px;
+                            display: flex;
+                            align-items: center;
+                            flex-direction: column;
+
+                            * {
+                                transition: var.$transition;
+                            }
+
+                            &:hover {
+                                cursor: pointer;
+
+                                .viewmore,
+                                .responsiveImage {
+                                    transform: scale(1.1);
+                                    box-shadow: 0 0 4px 0px #1c1c1c;
+                                }
+                            }
+
+                            a {
+
+                                display: flex;
+                                flex-direction: column;
+                                align-items: center;
+
+
+                                .icon {
+                                    font-size: 30px;
+                                }
+
+                                >.responsiveImage,
+                                .viewmore {
+                                    border-radius: 50%;
+                                    border: 3px solid #ffac32;
+                                    width: 80px;
+                                    height: 80px;
+                                    display: flex;
+                                    justify-content: center;
+                                    align-items: center;
+
+                                    >.responsiveImage,
+                                    svg {
+                                        display: flex;
+                                        align-items: center;
+                                        justify-content: center;
+                                    }
+
+                                }
+
+
+                            }
+
+                            h6 {
+                                font-size: 14px;
+
+
+
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+
+@media (min-width: 1220px) and (max-width: 1630px) {
+
+    // @include border();
+    .header .containerCategoria .categorias .subCategoria h5 {
+        margin-bottom: 10px;
+
+    }
+
+
+    .header .containerCategoria .categorias .subCategoria nav ul li>a {
+
+        .responsiveImage,
+        .viewmore {
+            width: 70px !important;
+            height: 70px !important;
+        }
+    }
+
+}
+
+
+
+@media (min-width: 1300px) and (max-width: 1500px) {
+
+    .header .containerCategoria {
+        gap: 30px;
+    }
+
+    .header .containerCategoria .categorias {
+        gap: 15px 25px;
+    }
+
+    .header .containerCategoria .categorias .subCategoria nav ul li>a {
+
+        .responsiveImage,
+        .viewmore {
+            width: 60px !important;
+            height: 60px !important;
+        }
+    }
+
+    .navToolTip ul li .container-menu-tooltip>div {
+        padding: 10px 0px;
+    }
+}
+
+@media (min-width: 1220px) and (max-width: 1500px) {
+
+    // @include border();
+    .header .containerCategoria .categorias .subCategoria nav ul li>a {
+
+        .responsiveImage,
+        .viewmore {
+            width: 60px !important;
+            height: 60px !important;
+        }
+    }
+
+}
+
+@media screen and (max-width: 1300px) {
+    // @include border();
+
+
+    .navToolTip ul li .container-menu-tooltip>div {
+        padding: 7px 10px;
+    }
+
+    .header .containerCategoria {
+        gap: 30px;
+    }
+
+    .header .containerCategoria .categorias {
+        gap: 15px 25px;
+    }
+
+    .header .containerCategoria .categorias .subCategoria nav ul li>a {
+
+        .responsiveImage,
+        .viewmore {
+            width: 50px !important;
+            height: 50px !important;
+        }
+    }
+
+    .header .containerCategoria .containerLeft {
+
+
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+
+    }
+
+    .header .containerCategoria .categorias .subCategoria nav ul li h6 {
+        font-size: 12px;
+    }
+
+    .header .containerCategoria .categorias .subCategoria nav ul {
+        gap: 5px;
+    }
+}
+
+@media screen and (max-width: 1300px) {
+    .header .containerCategoria .categorias .subCategoria nav ul li a .viewmore svg {
+        font-size: 20px;
+    }
+}
+
+@media screen and (max-width: 1200px) {
+
+    .header .containerCategoria {
+        max-width: 1000px;
+    }
+
+    .header .containerCategoria .categorias {
+        grid-template-columns: 1fr;
+
+    }
+}
+
+@media screen and (max-width: 1024px) {
+    .header {
+        .headerDown {
+            display: none;
+        }
+    }
+}

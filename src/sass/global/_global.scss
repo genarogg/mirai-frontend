@@ -10,11 +10,13 @@
 body {
   font-size: 16px;
   line-height: 1.5;
+  font-family: "Nunito", "Albert Sans";
 }
 
 a {
   text-decoration: none;
   color: var.$text-color-white;
+  display: flex;
 }
 
 button {
@@ -26,5 +28,12 @@ button {
 ul {
   list-style: none;
 }
+
+.icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
 
 @include fn.scroll($color: var.$color-quaternary, $bgColor: var.$color-secondary);
