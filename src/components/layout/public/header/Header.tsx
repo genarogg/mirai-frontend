@@ -2,7 +2,7 @@
 
 import React, { useEffect, useState } from 'react';
 
-import { LogoGenarogg } from 'nanify';
+import MiraiLogo from '@components/svg/miraiLogo';
 
 import HeaderUp from './HeaderUp';
 import HeaderDown from './HeaderDown';
@@ -24,7 +24,7 @@ const Header: React.FC<HeaderProps> = () => {
     const login = true
 
     // Definir los elementos del header
-    const logo = { href: "/", logo: <LogoGenarogg />, alt: "Logo" };
+    const logo = { href: "/", logo: <MiraiLogo />, alt: "Logo" };
 
     const navOuth = [
         { href: "/login", label: "login", icon: <RiUser3Fill /> },

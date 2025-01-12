@@ -1,0 +1,56 @@
+@use "/src/sass/global/_mixin.scss" as fn;
+
+$blur: blur(10px);
+$border-radius: 10px;
+$azul: #378eff;
+$border-platzi: #1e2229;
+
+
+
+
+.mirai {
+
+    .containerAll>header {
+        background-color: rgba($azul, 0.2);
+        border-bottom: 1px solid rgba($azul, 0.3);
+        backdrop-filter: $blur ;
+    }
+
+    .footer {
+        z-index: 100000;
+        position: relative;
+    }
+
+    .headerUp .logo a svg {
+        color: #fff;
+    }
+
+    .header .search .algolia {
+       @include fn.borderColored();
+       background-color: transparent;
+       z-index: 100;
+    }
+
+    .headerUp .user .sign-login nav ul li a .container-icono .icon svg:hover{
+        color: $azul;
+    }
+
+    .header .search .algolia > div{
+        box-shadow: 0px -20px 0px 0px $border-platzi;
+        box-shadow: 0px -20px 0px 0px transparent;
+        @include fn.borderColored();
+        background-color: transparent;
+    }
+
+    .algoliaSearch .algoliaBox{
+        background-color: $border-platzi;
+        @include fn.borderColored();
+        background-color: transparent;
+    }
+
+    .algoliaSearch .algoliaBox.title{
+        background-color: $border-platzi;
+        @include fn.borderColored();
+        background-color: transparent;
+    }
+}

@@ -1,0 +1,83 @@
+@use "/src/sass/global/mixin" as fn;
+@use "/src/sass/global/variables" as var;
+
+.containerSliderLg.bg {
+    height: 100vh;
+    height: 100dvh;
+
+    .containerInfo {
+        display: grid;
+
+        height: 100vh;
+        height: 100dvh;
+        justify-items: center;
+        align-items: center;
+        opacity: 0;
+
+        .content {
+            width: 100%;
+            padding: 40px;
+
+            text-transform: capitalize;
+
+            * {
+                max-width: 460px;
+            }
+
+            &.center {
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+            }
+
+
+            h2 {
+                @include fn.text-gradient(var.$color-secondary, var.$color-primary);
+                color: #fff;
+                margin-bottom: 10px;
+                font-size: 60px;
+                font-family: "Albert Sans";
+                font-weight: 500;
+            }
+
+            p {
+                margin-bottom: 30px;
+                font-size: 20px;
+                line-height: 24px;
+                color: #fff;
+            }
+
+
+            .btn-normal-basic {
+
+
+                @include fn.border-gradient($border-top: rgb(86, 255, 157),
+                    $border-bottom: rgb(0, 174, 255),
+                    $border-width: 1px,
+                    $bg-color: #282828,
+                    $animation-duration: 1s);
+                justify-content: left;
+                max-width: 250px;
+
+                button {
+                    border-radius: 0;
+
+                    a {
+                        text-align: center;
+                        display: flex;
+                        justify-content: center;
+                        color: #fff;
+
+                    }
+                }
+            }
+        }
+    }
+
+    .swiper-pagination {
+        .swiper-pagination-bullet {
+            box-shadow: 0 0 0 2px #fff;
+            margin: 0 10px;
+        }
+    }
+}

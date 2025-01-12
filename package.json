@@ -10,7 +10,7 @@
     "nanify": "node ./node_modules/nanify/fn/moveComponents.js"
   },
   "dependencies": {
-    "nanify": "^0.2.37",
+    "nanify": "^0.2.38",
     "next": "14.2.23",
     "react": "^18",
     "react-dom": "^18",
