@@ -1,0 +1,42 @@
+.auth-loki {
+    display: grid;
+    grid-template-columns: 4fr 1fr;
+
+    .container-form {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+        height: 100dvh;
+    }
+
+    .container-slider {
+
+        .containerSlider {
+            max-width: 600px;
+            min-width: 600px;
+        }
+
+        .swiper-pagination-bullet {
+            display: none;
+        }
+    }
+}
+
+@media screen and (max-width: 1150px) {
+    .auth-loki {
+        display: grid;
+        grid-template-columns: 1fr;
+
+ 
+
+        .container-slider {
+            display: none;
+
+
+            .swiper-pagination-bullet {
+                display: none;
+            }
+        }
+    }
+}

@@ -4,3 +4,7 @@ pasar el mixin de borderColored
 
        z-index: 100;
     }
+
+    agregar btn animate row
+
+    viewLoginLoki: ["formLoki", "swiperStructure","btnText"],

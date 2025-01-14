@@ -1,6 +1,7 @@
 import React from 'react'
 import Layout from '@components/layout/public/Layout';
 import SliderBackground from '@components/swiper/sliderBackground/SliderBackgroud';
+import CategoriasSlider from '@components/sections/categoriasSlider/CategoriasSlider';
 
 import img1 from "@public/swiper/01.jpg";
 import img2 from "@public/swiper/02.jpg";
@@ -14,9 +15,7 @@ interface homeProps {
 
 const home: React.FC<homeProps> = () => {
 
-
-
-    const data = [
+    const dataSliderBackground = [
         {
             img: img1.src,
             info: {
@@ -78,10 +77,19 @@ const home: React.FC<homeProps> = () => {
 
     ];
 
+    const dataCategoriasSlider = [
+        { name: 'Categoría 1', imgSrc: 'https://w0.peakpx.com/wallpaper/390/219/HD-wallpaper-abstract-color-cuadros-fondo-life.jpg' },
+        { name: 'Categoría 2', imgSrc: 'https://w0.peakpx.com/wallpaper/390/219/HD-wallpaper-abstract-color-cuadros-fondo-life.jpg' },
+        { name: 'Categoría 3', imgSrc: 'https://w0.peakpx.com/wallpaper/390/219/HD-wallpaper-abstract-color-cuadros-fondo-life.jpg' },
+        { name: 'Categoría 4', imgSrc: 'https://w0.peakpx.com/wallpaper/390/219/HD-wallpaper-abstract-color-cuadros-fondo-life.jpg' },
+        { name: 'Categoría 5', imgSrc: 'https://w0.peakpx.com/wallpaper/390/219/HD-wallpaper-abstract-color-cuadros-fondo-life.jpg' },
+    ];
+
     return (
         <Layout>
             <div className="slider-home">
-                <SliderBackground data={data} effect="ripple" />
+                <SliderBackground data={dataSliderBackground} effect="ripple" />
+                <CategoriasSlider data={dataCategoriasSlider} />
             </div>
         </Layout>
     );
