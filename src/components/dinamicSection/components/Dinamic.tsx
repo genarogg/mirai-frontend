@@ -89,17 +89,30 @@ const Dinamic: React.FC<DinamicProps> = ({ endpoint }) => {
             colores: ["#111", "#fff"],
             tallas: ["S", "M", "L"]
         },
-        // {
-        //     titulo: "Produwcto 3",
-        //     url: regexUrl("demwo-url"),
-        //     imgs: [
-        //         "https://esprit.vteximg.com.br/arquivos/ids/1370194/34_432F001_GRI180403_0.jpg",
-        //         "https://esprit.vteximg.com.br/arquivos/ids/1370625/34_432F014_VER190516_0.jpg"
-        //     ],
-        //     precio: 90,
-        //     colores: ["#222", "#808"],
-        //     tallas: ["M", "L", "XL"]
-        // },
+        {
+            titulo: "Produwcto 3",
+            url: regexUrl("demwo-url"),
+            imgs: [
+                "https://esprit.vteximg.com.br/arquivos/ids/1370194/34_432F001_GRI180403_0.jpg",
+                "https://esprit.vteximg.com.br/arquivos/ids/1370625/34_432F014_VER190516_0.jpg"
+            ],
+            precio: 90,
+            colores: ["#222", "#808"],
+            tallas: ["M", "L", "XL"]
+        },
+
+        {
+            titulo: "Prwoducto 2",
+            url: regexUrl("demo-url"),
+            imgs: [
+                "https://esprit.vteximg.com.br/arquivos/ids/1370194/34_432F001_GRI180403_0.jpg",
+                "https://esprit.vteximg.com.br/arquivos/ids/1370625/34_432F014_VER190516_0.jpg"
+            ],
+            precio: 120,
+            colores: ["#111", "#fff"],
+            tallas: ["S", "M", "L"]
+        },
+        
     ];
 
     return (
