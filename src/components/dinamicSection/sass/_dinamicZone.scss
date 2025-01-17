@@ -1,0 +1,39 @@
+@use "/src/sass/global/mixin" as fn;
+@use "/src/sass/global/variables" as var;
+
+.container-dinamic-zona {
+    .nav-dinamic-zone {
+        height: 100px;
+        //background-color: #000000;
+        margin: 20px 0;
+        @include fn.borderColored();
+
+        position: relative;
+
+        &::before {
+            border-radius: 0;
+            z-index: 10;
+        }
+
+        &::after {
+            z-index: 10;
+            border-radius: 0;
+        }
+
+        ul {
+            display: flex;
+            justify-content: space-evenly;
+            width: 100%;
+            align-items: center;
+            height: 100%;
+            z-index: 1000;
+            position: relative;
+
+            button {
+                font-size: 18px;
+                text-transform: capitalize;
+                color: #1e2229;
+            }
+        }
+    }
+}

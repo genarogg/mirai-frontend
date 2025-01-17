@@ -1,8 +1,7 @@
 import React from "react";
 import { SwitchTransition, CSSTransition } from "react-transition-group";
-import Demo1 from "./components/Demo1";
-import Demo2 from "./components/Demo2";
-import Demo3 from "./components/Demo3";
+import Dinamic from "./components/Dinamic";
+
 
 interface MainContentProps {
     context: string;
@@ -13,11 +12,11 @@ const MainContent: React.FC<MainContentProps> = ({ context, setContext }) => {
     const renderComponent = () => {
         switch (context) {
             case "vendido":
-                return <Demo1 />;
+                return <Dinamic endpoint="" />;
             case "nuevo":
-                return <Demo2 />;
+                return <Dinamic endpoint="" />;
             case "oferta":
-                return <Demo3 />;
+                return <Dinamic endpoint="" />;
             default:
                 return <p>Error al cargar zona dinamica</p>;
         }

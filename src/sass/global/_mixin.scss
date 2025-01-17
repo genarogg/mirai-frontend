@@ -132,8 +132,9 @@
   }
 }
 
+// #1e2229
+@mixin borderColored($bg: #ffffff) {
 
-@mixin borderColored($bg: #1e2229) {
   &::before {
     content: "";
     position: absolute;
@@ -159,3 +160,7 @@
 
   }
 }
+
+// @mixin borderColored() {
+//   border: 1px solid #000; // Ejemplo de estilo
+// }

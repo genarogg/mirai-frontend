@@ -84,6 +84,14 @@ $border-platzi: #1e2229;
 
     .btn-normal-basic button {
         border: none;
+
+        a{
+           
+        }
+    }
+
+    .containerSliderLg.bg .containerInfo .content .btn-normal-basic button a{
+        color: #1e2229;
     }
 
     .btn-normal-basic button:hover {
@@ -163,4 +171,6 @@ $border-platzi: #1e2229;
         display: flex;
         flex-direction: row;
     }
+
+ 
 }
