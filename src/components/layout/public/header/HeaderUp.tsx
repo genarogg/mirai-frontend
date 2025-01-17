@@ -1,5 +1,5 @@
 import React from 'react'
-import { A } from 'nanify';
+import { A } from "@nano";
 import AlgoliaSearch from '@components/algolia/AlgoliaSearch';
 import Nav from '@components/layout/nav/Nav';
 

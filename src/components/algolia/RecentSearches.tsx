@@ -1,5 +1,5 @@
 import React from 'react';
-import { Icon, A } from 'nanify';
+import { Icon, A } from "@nano";
 import { TbReload } from "react-icons/tb";
 import { IoTimerOutline } from "react-icons/io5";
 import style from './sass/_algolia.module.scss';

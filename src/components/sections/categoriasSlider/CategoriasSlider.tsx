@@ -4,7 +4,7 @@ import React, { useState } from 'react'
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Navigation, Autoplay } from 'swiper/modules';
 
-import { Icon } from 'nanify';
+import { Icon } from "@nano";
 import { IoIosArrowRoundBack } from "react-icons/io";
 import { IoIosArrowRoundForward } from "react-icons/io";
 import { MdArrowOutward } from "react-icons/md";
@@ -17,7 +17,7 @@ import 'swiper/css/navigation';
 
 import "./_categoriasSlider.scss";
 
-import { A } from "nanify"
+import { A } from "@nano"
 
 interface CategoriasSliderProps {
     data: any[];
@@ -40,7 +40,7 @@ const CategoriasSlider: React.FC<CategoriasSliderProps> = ({ data }) => {
                     onMouseLeave={() => setIsHovered(false)}
                 >
                     <Swiper
-                        slidesPerView={4}
+                        slidesPerView={6}
                         loop={true}
                         direction={'horizontal'}
                         speed={3000}
@@ -62,19 +62,19 @@ const CategoriasSlider: React.FC<CategoriasSliderProps> = ({ data }) => {
                         className="mySwiper"
                         breakpoints={{
                             1500: {
-                                slidesPerView: 4,
+                                slidesPerView: 5,
                                 slidesPerGroup: 2,
                             },
                             1000: {
-                                slidesPerView: 3,
+                                slidesPerView: 4,
                                 slidesPerGroup: 1,
                             },
                             700: {
-                                slidesPerView: 2,
+                                slidesPerView: 3,
                                 slidesPerGroup: 1,
                             },
                             500: {
-                                slidesPerView: 1,
+                                slidesPerView: 2,
                                 slidesPerGroup: 1,
                             },
                         }}
@@ -82,12 +82,16 @@ const CategoriasSlider: React.FC<CategoriasSliderProps> = ({ data }) => {
                         {data.map((category, index) => (
                             <SwiperSlide key={index} >
                                 <div className="conainer-single-slider">
-                                    <img src={category.imgSrc} alt="img" />
-                                    <h3>
-                                        <A href={`/categorias/${regexUrl(category.name)} `} >
+                                    <A href={`/categorias/${regexUrl(category.name)} `} >
+                                        <div className="container-img">
+                                            <img src={category.imgSrc} alt="img" />
+                                        </div>
+                                        <h3>
+
                                             {category.name}
-                                        </A>
-                                    </h3>
+
+                                        </h3>
+                                    </A>
                                 </div>
 
                             </SwiperSlide>

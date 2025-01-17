@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useRef } from "react";
 import { useSearchBox } from "react-instantsearch";
 import { FaSearch } from "react-icons/fa";
-import { Icon } from "nanify";
+import { Icon } from "@nano";
 
 import { isProd } from "@env"
 

@@ -1,6 +1,6 @@
 'use client';
 import React from 'react'
-import { A, Icon } from "nanify";
+import { A, Icon } from "@nano";
 
 interface NavProps {
   className?: string;

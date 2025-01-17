@@ -2,7 +2,7 @@
 import React from 'react';
 import "./sass/_sliderBackgroud.scss";
 import { SwiperSlide } from 'swiper/react';
-import { A, Icon } from 'nanify';
+import { A, Icon } from "@nano";
 
 import { IoIosArrowForward } from "react-icons/io";
 
@@ -24,7 +24,7 @@ const SliderBackground: React.FC<SliderBackgroundProps> = ({ data, effect }) => 
                             className="swiper-gl-image"
                         />
                         <div className="containerInfo" key={index}>
-                            <div className="content center">
+                            <div className="content">
                                 <h2>{element.info.title}</h2>
                                 <p>{element.info.description}</p>
                                 <BtnNormalBasic className="btnNormalBasic" >

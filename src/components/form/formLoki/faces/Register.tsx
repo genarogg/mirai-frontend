@@ -1,5 +1,5 @@
 import React, { useRef } from 'react'
-import { Input } from 'nanify';
+import { Input } from "@nano";
 import BtnSubmitBasic from './btnSubmitBasic';
 import { BsFillEnvelopeHeartFill, BsPersonFill } from 'react-icons/bs';
 import { MdLock } from 'react-icons/md';

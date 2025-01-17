@@ -1,5 +1,5 @@
 import React, { useRef, useState } from 'react'
-import { Input, CheckBoxBasic } from 'nanify';
+import { Input, CheckBoxBasic } from "@nano";
 
 import BtnSubmitBasic from './btnSubmitBasic';
 import BtnText from '@components/btns/basic/btnText';

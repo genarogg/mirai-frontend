@@ -1,5 +1,5 @@
 import React from 'react';
-import { A, Img, Icon } from "nanify";
+import { A, Img, Icon } from "@nano";
 
 import BtnLoki from "@components/btns/hamburguesa/btnLoki";
 import BtnNormalBasic from "@components/btns/basic/btnNormalBasic";

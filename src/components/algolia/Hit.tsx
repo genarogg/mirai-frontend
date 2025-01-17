@@ -1,5 +1,5 @@
 import React from 'react'
-import { A, Icon } from 'nanify';
+import { A, Icon } from "@nano";
 import { IoFlash } from "react-icons/io5";
 
 interface HitProps {

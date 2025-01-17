@@ -1,6 +1,6 @@
 import React from 'react'
 import { FaArrowLeft } from 'react-icons/fa';
-import { Icon } from 'nanify';
+import { Icon } from "@nano";
 
 import "./_btnRowCircle.scss";
 

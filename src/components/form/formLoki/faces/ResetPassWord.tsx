@@ -2,7 +2,7 @@ import React, { useRef, useState } from 'react'
 import "./sass/_resetPassword.scss"
 
 import { $ } from "@fn/index";
-import { Input } from 'nanify';
+import { Input } from "@nano";
 
 import BtnSubmitBasic from './btnSubmitBasic';
 import BtnRowCircle from "@components/btns/animate/btnRowCircle";

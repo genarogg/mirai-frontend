@@ -1,5 +1,5 @@
 import React from 'react'
-import { UltimateTooTip, Icon } from 'nanify';
+import { UltimateTooTip, Icon } from "@nano";
 import { IoIosArrowDown } from "react-icons/io";
 
 

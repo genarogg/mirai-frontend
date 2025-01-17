@@ -6,8 +6,8 @@ import { EffectFade } from 'swiper/modules';
 
 /* lib */
 // @ts-ignore
-import SwiperGL from '@components/swiper/structura/lib/swiper-gl.min.js';
-import "@components/swiper/structura/lib/_swiper-gl.scss";
+import SwiperGL from '@components/swiper/estructura/lib/swiper-gl.min.js';
+import "@components/swiper/estructura/lib/_swiper-gl.scss";
 
 // Import Swiper styles
 import 'swiper/css';
