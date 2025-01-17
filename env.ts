@@ -11,6 +11,9 @@ const PUBLIC_NEXT_URL_BACKEND_PROD = "PROD"
 const PUBLIC_NEXT_URL_FRONTEND_DEV = "http://localhost:3000"
 const PUBLIC_NEXT_URL_FRONTEND_PROD = "PROD"
 
+/* GOOGLE */
+const RECAPTCHA_KEY = "6LfVlLUqAAAAAHSxM5KYvmr--NOupZdKFu-JYIwf"
+
 // saber si estoy en produccion
 const NODE_ENV = process.env.NODE_ENV;
 const isProd = NODE_ENV === "production";
@@ -25,4 +28,5 @@ export {
     PUBLIC_NEXT_ALGOLIA_KEY as ALGOLIA_KEY,
     URL_BACKEND,
     URL_FRONTEND,
+    RECAPTCHA_KEY
 };
