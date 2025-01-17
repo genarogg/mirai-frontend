@@ -45,6 +45,8 @@ const getRandomShader = (arr, opts) => {
 
 class GL {
   constructor(opts) {
+    console.log(opts)
+
     const shader =
       opts.shader === 'random' || Array.isArray(opts.shader)
         ? getRandomShader(opts.shader, opts)
@@ -67,6 +69,8 @@ class GL {
 
     this.container = this.swiper.el;
     this.displacementTexture = null;
+
+
 
     this.width = this.swiper.width;
     this.height = this.swiper.height;
@@ -145,7 +149,7 @@ class GL {
         ? this.swiper.hostEl
         : this.container;
 
-    container.querySelectorAll('.swiper-gl-image').forEach((img) => {
+    container.querySelectorAll(`#${this.container.id} .swiper-gl-image`).forEach((img) => {
       this.images.push(img.src);
     });
 
@@ -260,9 +264,9 @@ class GL {
       fragment: this.shader.fragment,
       ...(this.shader.vertex
         ? {
-            transparent: true,
-            depthWrite: false,
-          }
+          transparent: true,
+          depthWrite: false,
+        }
         : {}),
     });
   }

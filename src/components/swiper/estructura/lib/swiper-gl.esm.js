@@ -29,6 +29,7 @@ export default function SwiperGL({ swiper, on, extendParams }) {
   });
 
   const glInit = () => {
+    console.log(swiper.el.id);
     swiper.gl = new GL({
       swiper,
       shader: swiper.params.gl.shader,

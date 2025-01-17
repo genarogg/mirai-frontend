@@ -33,10 +33,10 @@ const DinamicZone: React.FC<DinamicZoneProps> = () => {
                 </ul>
             </nav>
 
-            <MainContent
+            {/* <MainContent
                 context={context}
                 setContext={setContext}
-            />
+            /> */}
 
         </div>
 

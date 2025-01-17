@@ -6,7 +6,7 @@ import { Mousewheel, Pagination, EffectFade, Autoplay, } from 'swiper/modules';
 
 /* lib */
 // @ts-ignore
-import SwiperGL from './lib/swiper-gl.min.js';
+import SwiperGL from './lib/swiper-gl.esm';
 import "./lib/_swiper-gl.scss";
 
 // Import Swiper styles
@@ -44,11 +44,13 @@ const SwiperLGBackgroud: React.FC<SwiperLGProps> = ({ children, effect = "random
             <Swiper
                 ref={swiperRef}
                 style={{ height: height }}
-
+                id='hola3'
                 effect="gl"
                 onBeforeInit={(swiper: any) => {
                     swiper.params.gl.shader = effect
+                    swiper.params.gl.id = "hola"
                 }}
+             
                 direction={'horizontal'}
                 speed={3000}
                 autoplay={autoplay}
