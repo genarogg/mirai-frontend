@@ -1,7 +1,41 @@
-.dinamic-card-container{
+@use "/src/sass/global/mixin" as fn;
+@use "/src/sass/global/variables" as var;
+
+.external-dinamic-card-container {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+
+.dinamic-card-container {
     display: grid;
     grid-template-columns: 1fr 1fr 1fr 1fr;
+    gap: 20px;
 
-    
-    
+
+}
+
+
+@media screen and (max-width: 1550px) {
+
+    .dinamic-card-container {
+        grid-template-columns: 1fr 1fr 1fr;
+    }
+
+}
+
+@media screen and (max-width: 1180px) {
+
+    .dinamic-card-container {
+        grid-template-columns: 1fr 1fr;
+    }
+
+}
+
+@media screen and (max-width: 750px) {
+
+    .dinamic-card-container {
+        grid-template-columns: 1fr;
+    }
+
 }

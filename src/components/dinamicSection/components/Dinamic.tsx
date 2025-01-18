@@ -146,8 +146,9 @@ const Dinamic: React.FC<DinamicProps> = ({ endpoint }) => {
     ];
 
     return (
-        <div className="dinamic-card-container">
+        <div className="external-dinamic-card-container">
             <div className="dinamic-card-container">
+
                 {data.slice(0, 4).map((item, index) => (
                     <CardProductoAlana key={index} data={item} id="t1" />
                 ))}
@@ -157,6 +158,7 @@ const Dinamic: React.FC<DinamicProps> = ({ endpoint }) => {
                 {data.slice(8, 12).map((item, index) => (
                     <CardProductoAlana key={index} data={item} id="t3" />
                 ))}
+
             </div>
         </div>
     );

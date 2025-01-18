@@ -7,6 +7,8 @@ import MentorBasico from '@components/mentorHome/MentorBasico';
 
 import DinamicZone from '@components/dinamicSection/DinamicZone';
 
+import "./sass/_home.scss";
+
 import img1 from "@public/swiper/01.jpg";
 import img2 from "@public/swiper/02.jpg";
 import img3 from "@public/swiper/03.jpg";
@@ -120,10 +122,10 @@ const home: React.FC<homeProps> = () => {
                 <CategoriasSlider data={dataCategoriasSlider} />
 
                 <DinamicZone />
-                {/* <div className="container-mentor">
+                <div className="container-mentor">
                     <MentorBasico data={data} />
                     <MentorBasico data={data2} reverse={true} />
-                </div> */}
+                </div>
             </div>
         </Layout>
     );

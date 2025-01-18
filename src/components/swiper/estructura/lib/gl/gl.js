@@ -235,36 +235,41 @@ class GL {
   }
 
   createMaterial() {
-    return new Program(this.gl, {
-      extensions: {
-        derivatives: '#extension GL_OES_standard_derivatives : enable',
-      },
-      // side: DoubleSide,
-      uniforms: {
-        time: { type: 'f', value: 0 },
-        progress: { type: 'f', value: 0 },
-        intensity: { type: 'f', value: 0 },
-        width: { type: 'f', value: 0 },
-        radius: { type: 'f', value: 0 },
-        size: { type: 'f', value: 0 },
-        texture1: { type: 'f', value: this.textures[0] },
-        texture2: { type: 'f', value: this.textures[1] },
 
-        displacement: {
-          type: 'f',
-          value: this.displacementTexture,
+    try {
+      return new Program(this.gl, {
+        extensions: {
+          derivatives: '#extension GL_OES_standard_derivatives : enable',
         },
-        resolution: { type: 'v4', value: new Vec4() },
-      },
-      vertex: this.shader.vertex || defaultVertex,
-      fragment: this.shader.fragment,
-      ...(this.shader.vertex
-        ? {
+        // side: DoubleSide,
+        uniforms: {
+          time: { type: 'f', value: 0 },
+          progress: { type: 'f', value: 0 },
+          intensity: { type: 'f', value: 0 },
+          width: { type: 'f', value: 0 },
+          radius: { type: 'f', value: 0 },
+          size: { type: 'f', value: 0 },
+          texture1: { type: 'f', value: this.textures[0] },
+          texture2: { type: 'f', value: this.textures[1] },
+
+          displacement: {
+            type: 'f',
+            value: this.displacementTexture,
+          },
+          resolution: { type: 'v4', value: new Vec4() },
+        },
+        vertex: this.shader.vertex || defaultVertex,
+        fragment: this.shader.fragment,
+        ...(this.shader.vertex
+          ? {
             transparent: true,
             depthWrite: false,
           }
-        : {}),
-    });
+          : {}),
+      });
+    } catch (error) {
+
+    }
   }
 
   addObjects() {
@@ -445,6 +450,7 @@ class GL {
   }
 
   render() {
+
     if (this.swiper.destroyed || this.destroyed) return;
     this.time += 0.05;
     this.material.uniforms.time.value = this.time;

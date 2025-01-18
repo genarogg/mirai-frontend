@@ -40,7 +40,6 @@ const SwiperLGTwoElements: React.FC<SwiperLGProps> = ({
         }
     };
 
-
     return (
         <div
             className='containerSlider'

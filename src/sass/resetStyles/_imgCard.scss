@@ -1,0 +1,29 @@
+@use "/src/sass/global/_mixin.scss" as fn;
+@use "/src/sass/global/variables.scss" as var;
+
+.card-alana-producto {
+
+    .container-img {
+        @include fn.borderColored();
+
+        &::before {
+            z-index: 10;
+        }
+
+        &::after {
+            z-index: 5;
+        }
+
+        a {
+            border: 1px solid #ffffff00;
+            z-index: 1000;
+            position: relative;
+
+            .mySwiper {
+                border-radius: 10px;
+                height: 458px !important;
+                width: 358px !important;
+            }
+        }
+    }
+}

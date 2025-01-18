@@ -21,7 +21,7 @@ interface HeaderProps { }
 
 const Header: React.FC<HeaderProps> = () => {
 
-    const login = true
+    const login = false
 
     // Definir los elementos del header
     const logo = { href: "/", logo: <MiraiLogo />, alt: "Logo" };

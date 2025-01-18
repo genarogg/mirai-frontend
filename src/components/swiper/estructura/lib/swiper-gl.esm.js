@@ -8,6 +8,8 @@ export default function SwiperGL({ swiper, on, extendParams }) {
   swiper.gl = null;
   let noWebGLSupport = false;
 
+
+
   function supportsWebGL() {
     try {
       const canvas = document.createElement('canvas');
