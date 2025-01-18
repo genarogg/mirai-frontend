@@ -36,7 +36,7 @@ const Auth: React.FC<AuthProps> = () => {
                 </div>
 
                 <div className="container-slider">
-                    <SwiperLGBackgroud effect='wind'>
+                    <SwiperLGBackgroud effect='wind' id="slider-auth">
                         {data.map((element: any, index: any) => (
                             <SwiperSlide key={index}>
                                 <img src={element.img}
