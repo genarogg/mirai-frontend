@@ -18,6 +18,7 @@ import SwiperLGProps from './SwiperProps';
 
 const SwiperLGTwoElements: React.FC<SwiperLGProps> = ({
     children,
+    id,
     effect = "random",
     height = "100dvh",
     width = "380px",
@@ -55,7 +56,7 @@ const SwiperLGTwoElements: React.FC<SwiperLGProps> = ({
                         swiper.params.gl.shader = effect
                     }
                 }
-               
+                id={id}
                 direction={'horizontal'}
                 speed={1500}
                 allowTouchMove={false}

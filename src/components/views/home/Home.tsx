@@ -116,14 +116,14 @@ const home: React.FC<homeProps> = () => {
     return (
         <Layout>
             <div className="slider-home">
-                <SliderBackground data={dataSliderBackground} effect="morph-x" />
+                <SliderBackground data={dataSliderBackground} effect="morph-x" id="principalSlider" />
                 <CategoriasSlider data={dataCategoriasSlider} />
 
                 <DinamicZone />
-                <div className="container-mentor">
+                {/* <div className="container-mentor">
                     <MentorBasico data={data} />
                     <MentorBasico data={data2} reverse={true} />
-                </div>
+                </div> */}
             </div>
         </Layout>
     );

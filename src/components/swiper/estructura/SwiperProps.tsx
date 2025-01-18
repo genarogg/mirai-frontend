@@ -1,5 +1,6 @@
 interface SwiperProps {
     children: React.ReactNode;
+    id: string;
     effect?:
     "random" |
     "dots" |

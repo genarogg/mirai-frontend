@@ -10,13 +10,13 @@ import SwiperLGBackgroud from '@components/swiper/estructura/SwiperLGBackgroud';
 import BtnNormalBasic from "@components/btns/basic/btnNormalBasic";
 
 
-interface SliderBackgroundProps { data: any, effect: any }
+interface SliderBackgroundProps { data: any, effect: any, id: string }
 
-const SliderBackground: React.FC<SliderBackgroundProps> = ({ data, effect }) => {
+const SliderBackground: React.FC<SliderBackgroundProps> = ({ data, effect, id }) => {
 
     return (
         <div className='containerSliderLg bg'>
-            <SwiperLGBackgroud effect={effect} >
+            <SwiperLGBackgroud effect={effect} id={id}>
                 {data.map((element: any, index: any) => (
                     <SwiperSlide key={index}>
                         <img src={element.img}

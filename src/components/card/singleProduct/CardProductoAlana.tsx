@@ -14,9 +14,10 @@ import { MdOutlineCompareArrows } from "react-icons/md";
 
 interface CardProductoAlanaProps {
     data: any
+    id: string
 }
 
-const CardProductoAlana: React.FC<CardProductoAlanaProps> = ({ data }) => {
+const CardProductoAlana: React.FC<CardProductoAlanaProps> = ({ data, id }) => {
 
     const quickActions = [
         { items: ['Comparar'], icon: <MdOutlineCompareArrows /> },
@@ -32,7 +33,9 @@ const CardProductoAlana: React.FC<CardProductoAlanaProps> = ({ data }) => {
                     <SwiperLGTwoElements
                         effect='morph-y'
                         height="460px"
-                        width='360px'>
+                        width='360px'
+                        id={id}
+                        >
                         {data.imgs.map((img: any, colorIndex: any) => (
                             <SwiperSlide key={colorIndex}>
                                 <img
