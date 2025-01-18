@@ -6,7 +6,7 @@ import { EffectFade } from 'swiper/modules';
 
 /* lib */
 // @ts-ignore
-import SwiperGL from './lib/swiper-gl.min.js';
+import SwiperGL from './lib/swiper-gl.esm';
 import "@components/swiper/estructura/lib/_swiper-gl.scss";
 
 // Import Swiper styles
@@ -61,7 +61,7 @@ const SwiperLGTwoElements: React.FC<SwiperLGProps> = ({
                 speed={1500}
                 allowTouchMove={false}
                 simulateTouch={false}
-                loop={true}
+                // loop={true}
 
                 modules={[
                     EffectFade,
