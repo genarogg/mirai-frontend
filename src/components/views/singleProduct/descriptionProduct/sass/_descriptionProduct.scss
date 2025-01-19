@@ -1,0 +1,168 @@
+@use "/src/sass/global/_mixin.scss" as fn;
+@use "/src/sass/global/variables.scss" as var;
+
+.description-product {
+    position: relative;
+
+    * {
+        font-family: "Albert Sans";
+    }
+
+    hr {
+        background: linear-gradient(83.23deg, #feb154 -6.32%, #d263ee 23.89%, #5d5af6 67.88%, #09e0a0 107.67%), linear-gradient(0deg, rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3));
+        height: 1px;
+        border: none;
+        margin: 10px 0;
+
+    }
+
+    h1,
+    h2 {
+        font-size: 18px;
+        font-weight: 400;
+        color: #3a3a3a;
+        letter-spacing: 1px;
+        text-transform: capitalize;
+
+    }
+
+    //.container-titulo {}
+
+    .container-description {
+        overflow: auto;
+        display: -webkit-box;
+        -webkit-box-orient: vertical;
+        -webkit-line-clamp: 8;
+    }
+
+    .container-ranking {
+
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 30px;
+
+        .ranking {
+            display: flex;
+
+            align-items: center;
+
+            h2 {
+                display: flex;
+
+
+            }
+
+            .ranking-stars {
+                display: inline-flex;
+
+                align-items: center;
+                justify-content: center;
+
+                color: #ffac32;
+            }
+
+            &.vendedor{
+                .ranking-stars{
+                    color: #1667ff;
+                }
+            }
+        }
+    }
+
+    .tallas-y-colores-container {
+
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 30px;
+    }
+
+    .colores {
+        display: flex;
+
+        .color {
+            width: 25px;
+            height: 25px;
+            border-radius: 50%;
+            margin-left: 10px;
+            border: 2px solid #fff;
+            box-shadow: 0 0 0 #000;
+        }
+    }
+
+    .tallas {
+        display: flex;
+        align-items: center;
+
+        .talla {
+            margin-left: 10px;
+            background-color: #fff;
+            width: 30px;
+            height: 30px;
+            text-align: center;
+            border-radius: 50%;
+            font-size: 18px;
+            font-weight: 500;
+
+            display: flex;
+            justify-content: center;
+            align-items: center;
+
+            @include fn.borderColored();
+        }
+    }
+
+    .container-precio {
+        display: flex;
+        align-items: center;
+
+        p {
+            margin-left: 10px;
+            font-weight: 600;
+        }
+    }
+
+    .anadir-carrito {
+        position: absolute;
+        bottom: 10px;
+        width: 100%;
+
+
+        .btn-container {
+            @include fn.borderColored(#fff);
+            overflow: hidden;
+
+            &::before,
+            &:after {
+                z-index: 1;
+
+            }
+
+            .btn-normal-basic {
+                z-index: 10;
+                width: 100%;
+
+                button {
+                    &:active {
+                        background-color: transparent;
+                        transform: scale(0.9);
+                        color: #ff0
+                    }
+
+                    &:disabled {
+                        background-color: transparent;
+                    }
+
+                    &:focus {
+                        background-color: transparent;
+                        color: #ffac32;
+                    }
+
+                    &:hover {
+                        background-color: transparent;
+                        color: #ffac32;
+                    }
+                }
+            }
+        }
+    }
+}

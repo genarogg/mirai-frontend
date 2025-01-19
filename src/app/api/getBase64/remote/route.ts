@@ -5,6 +5,8 @@ export const GET = async (req: NextRequest) => {
   const { searchParams } = new URL(req.url);
   const url = searchParams.get('url');
 
+  console.log(url)
+
   if (!url) {
     return NextResponse.json({ error: 'URL is required' }, { status: 400 });
   }

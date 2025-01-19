@@ -31,6 +31,7 @@ const Img: React.FC<ImgProps> = ({
 
 
     useInsertionEffect(() => {
+        console.log("src: ",src)
         if (typeof src === 'string' && src.startsWith('http') && !blurDataURL) {
             fetch(`/api/getBase64/remote?url=${encodeURIComponent(src)}`)
                 .then(response => response.json())
@@ -47,9 +48,13 @@ const Img: React.FC<ImgProps> = ({
     }, [src]);
 
     useEffect(() => {
+
+        console.log(svgBackground)
         const conteiner = $(id + "Conteiner");
         const img = $(id + "Img");
         const ghost = $(id + "ghost");
+
+        console.log(img , conteiner, ghost)
 
 
         if (img && conteiner && ghost) {

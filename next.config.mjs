@@ -1,4 +1,23 @@
-/** @type {import('next').NextConfig} */
-const nextConfig = {};
+// @ts-check
+import withPlaiceholder from "@plaiceholder/next";
 
-export default nextConfig;
+/**
+ * @type {import('next').NextConfig}
+ */
+
+const config = {
+  reactStrictMode: true,
+  images: {
+    domains: [
+      "images.unsplash.com",
+      "www.gravatar.com",
+      "cdn.pixabay.com",
+      "themesflat.co",
+      "encrypted-tbn0.gstatic.com",
+      "esprit.vteximg.com.br",
+      "w0.peakpx.com",
+    ],
+  },
+};
+
+export default withPlaiceholder(config);

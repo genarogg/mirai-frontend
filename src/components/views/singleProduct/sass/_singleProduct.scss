@@ -1,0 +1,26 @@
+@use "/src/sass/global/_mixin.scss" as fn;
+@use "/src/sass/global/variables.scss" as var;
+
+.container-product-data {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+
+    .internar-container {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        max-width: 1200px;
+        gap: 50px;
+
+        .Container-single-product {
+            max-width: 600px;
+            justify-content: center;
+            align-items: center;
+        }
+    }
+
+    .description-product {
+        max-width: 600px;
+    }
+
+}

@@ -1,0 +1,56 @@
+
+@use "/src/sass/global/_mixin.scss" as fn;
+@use "/src/sass/global/variables.scss" as var;
+
+.slider-container {
+
+    display: flex;
+    max-width: 500px;
+
+    .thumbs-swiper {
+        width: 120px;
+        height: 500px;
+        overflow-y: auto;
+
+        .swiper-wrapper {
+            display: flex;
+            
+            align-items: center;
+        }
+
+        .swiper-slide {
+            @include fn.borderColored();
+            align-items: center;
+            justify-content: center;
+            display: flex;
+            overflow: hidden;
+            height: 110px !important;
+            width: 90px;
+            margin-bottom: 10px;
+            overflow: hidden;
+        }
+
+        .swiper-slide.swiper-slide-thumb-active {
+            &::before {
+                background: #000
+            }
+        }
+
+        img {
+            align-items: center;
+            justify-content: center;
+            border-radius: 25px;
+            object-fit: contain;
+
+        }
+    }
+    
+    .lg-producto-single{
+        canvas,img{
+            border-radius: 10px;
+            overflow: hidden;
+            
+        }
+    }
+    
+}

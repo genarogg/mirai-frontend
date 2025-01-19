@@ -23,18 +23,20 @@ const SliderBackground: React.FC<SliderBackgroundProps> = ({ data, effect, id })
                             alt="img"
                             className="swiper-gl-image"
                         />
-                        <div className="containerInfo" key={index}>
-                            <div className="content">
-                                <h2>{element.info.title}</h2>
-                                <p>{element.info.description}</p>
-                                <BtnNormalBasic className="btnNormalBasic" >
-                                    <A href={element.info.btn.link}>
-                                        {element.info.btn.text}
-                                        <Icon icon={<IoIosArrowForward />} />
-                                    </A>
-                                </BtnNormalBasic>
+                        {element.info && (
+                            <div className="containerInfo" key={index}>
+                                <div className="content">
+                                    <h2>{element.info.title}</h2>
+                                    <p>{element.info.description}</p>
+                                    <BtnNormalBasic className="btnNormalBasic" >
+                                        <A href={element.info.btn.link}>
+                                            {element.info.btn.text}
+                                            <Icon icon={<IoIosArrowForward />} />
+                                        </A>
+                                    </BtnNormalBasic>
+                                </div>
                             </div>
-                        </div>
+                        )}
                     </SwiperSlide>
                 ))}
             </SwiperLGBackgroud>
