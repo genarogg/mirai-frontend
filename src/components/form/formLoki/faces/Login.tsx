@@ -9,13 +9,17 @@ import { BsFillEnvelopeHeartFill } from 'react-icons/bs';
 import { MdLock } from "react-icons/md";
 
 import HeadBtn from "./global/HeadBtn";
+import RedesLogin from './global/RedesLogin';
 
 
 interface LoginProps {
     cardState: (css: string) => void;
+    register: boolean;
+    reset: boolean;
+    social?: boolean;
 }
 
-const Login: React.FC<LoginProps> = ({ cardState }) => {
+const Login: React.FC<LoginProps> = ({ cardState, register, reset, social = false }) => {
 
     const inputRef = useRef({
         email: "",
@@ -59,8 +63,8 @@ const Login: React.FC<LoginProps> = ({ cardState }) => {
 
     return (
         <>
-            <div className="login front">
-                <HeadBtn cardState={cardState} register={true} />
+            <div className={`login front ${social ? "social" : ""}`} id="login">
+                <HeadBtn cardState={cardState} register={register} />
                 <form onSubmit={handleSubmit} >
                     <Input
                         type="email"
@@ -84,9 +88,11 @@ const Login: React.FC<LoginProps> = ({ cardState }) => {
                         onClick={toogleChecked}
                     />
 
+                    {social && <RedesLogin />}
+
                     <BtnSubmitBasic
                         formData={{
-                            data: inputRef.current,
+                            data: inputRef,
                             check: isChecked
                         }}
                         endpoint="/login"
@@ -95,12 +101,14 @@ const Login: React.FC<LoginProps> = ({ cardState }) => {
                         Iniciar sesión
                     </BtnSubmitBasic>
 
-                    <BtnText onClick={() => {
-                        active();
-                        cardState("left-active");
-                    }} >
-                        ¿Olvidaste tu contraseña?
-                    </BtnText>
+                    {reset && (
+                        <BtnText onClick={() => {
+                            active();
+                            cardState("left-active");
+                        }} >
+                            ¿Olvidaste tu contraseña?
+                        </BtnText>
+                    )}
 
                 </form>
             </div >

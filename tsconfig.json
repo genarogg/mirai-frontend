@@ -34,9 +34,12 @@
       "@public/*": [
         "./public/*"
       ],
-      "@nano":[
+      "@nano": [
         "./src/components/nano"
-      ]
+      ],
+      "@hook/*": [
+        "./src/hook/*"
+      ],
     }
   },
   "include": [

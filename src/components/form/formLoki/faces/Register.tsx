@@ -6,12 +6,14 @@ import { MdLock } from 'react-icons/md';
 import { IoMdUnlock } from "react-icons/io";
 
 import HeadBtn from "./global/HeadBtn";
+import RedesLogin from './global/RedesLogin';
 
 interface RegisterProps {
     cardState: (css: string) => void;
+    social?: boolean;
 }
 
-const Register: React.FC<RegisterProps> = ({ cardState }) => {
+const Register: React.FC<RegisterProps> = ({ cardState, social = false }) => {
     const inputRef = useRef({
         name: "",
         email: "",
@@ -31,7 +33,7 @@ const Register: React.FC<RegisterProps> = ({ cardState }) => {
 
     return (
 
-        <div className="register right" id="register">
+        <div className={`register right ${social ? "social" : ""}`} id="register">
             <HeadBtn cardState={cardState} register={true} />
             <form onSubmit={(e) => { e.preventDefault() }}>
                 <Input
@@ -67,9 +69,11 @@ const Register: React.FC<RegisterProps> = ({ cardState }) => {
                     onChange={handleChange}
                 />
 
+                {social && <RedesLogin />}
+
                 <BtnSubmitBasic
                     formData={{
-                        data: inputRef.current,
+                        data: inputRef,
                     }}
                     endpoint="/register"
                     push="/"

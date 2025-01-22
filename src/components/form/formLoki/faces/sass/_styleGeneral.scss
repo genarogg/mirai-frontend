@@ -13,6 +13,9 @@
     width: 360px;
     z-index: 2;
 
+    
+ 
+
     &.right-active {
         transform: rotateY(180deg);
 
@@ -31,6 +34,10 @@
             border: var.$border-color;
             transition: all ease 1.6s;
             z-index: 4;
+
+            &.social{
+                @include fn.height(600px);
+            }
         }
     }
 
@@ -107,6 +114,10 @@
         @include fn.height(450px);
         position: absolute;
         backface-visibility: hidden;
+
+        &.social{
+            @include fn.height(500px);
+        }
     }
 
     .right {

@@ -57,8 +57,6 @@ const ResetPassWord: React.FC<ResetPassWordProps> = ({ cardState }) => {
                 }} />
 
                 <p>Restablecer la contraseña</p>
-
-                <hr className="titleHr" />
             </div>
             <form
                 onSubmit={(e) => {

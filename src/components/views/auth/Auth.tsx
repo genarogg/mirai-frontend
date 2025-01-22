@@ -1,6 +1,7 @@
 "use client";
 import React from 'react'
 import "./sass/_auth.scss";
+import useIsLargeScreen from '@hook/useIsLargeScreen';
 import { SwiperSlide } from 'swiper/react'
 import LokiLogin from '@components/form/formLoki/LokiLogin';
 import SwiperLGBackgroud from '@components/swiper/estructura/SwiperLGBackgroud';
@@ -28,26 +29,31 @@ const Auth: React.FC<AuthProps> = () => {
         },
     ];
 
+    const isLarge = useIsLargeScreen({ dimension: 1150 });
+
     return (
         <>
             <div className="auth-loki">
                 <div className="container-form">
                     <LokiLogin />
                 </div>
+                <>
+                    {isLarge && (
+                        <div className="container-slider">
+                            <SwiperLGBackgroud effect='wind' id="slider-auth">
+                                {data.map((element: any, index: any) => (
+                                    <SwiperSlide key={index}>
+                                        <img src={element.img}
+                                            alt="img"
+                                            className="swiper-gl-image"
+                                        />
 
-                <div className="container-slider">
-                    <SwiperLGBackgroud effect='wind' id="slider-auth">
-                        {data.map((element: any, index: any) => (
-                            <SwiperSlide key={index}>
-                                <img src={element.img}
-                                    alt="img"
-                                    className="swiper-gl-image"
-                                />
-
-                            </SwiperSlide>
-                        ))}
-                    </SwiperLGBackgroud>
-                </div>
+                                    </SwiperSlide>
+                                ))}
+                            </SwiperLGBackgroud>
+                        </div>
+                    )}
+                </>
             </div>
         </>
     );
