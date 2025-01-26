@@ -1,24 +1,44 @@
 'use client'
 import React, { useState } from 'react'
 import Layout from '@components/layout/public/Layout'
-import { Img, InputImageUploader } from "@nano"
+import { Img, InputImageUploader, notify } from "@nano"
+import BtnNormalBasic from '@components/btns/basic/btnNormalBasic'
 
 import imgExample from "@public/example-up/img-example.webp"
 import HeaderGhost from '@components/layout/public/header/HeaderGhost'
-import { motion, AnimatePresence } from 'framer-motion';
 
 import Collapsible from '@components/Collapsible/Collapsible'
-
 
 interface datosProps {
 
 }
 
 const datos: React.FC<datosProps> = () => {
-    const [state, setState] = useState<any>({
-        imgProfile: "",
+    const [state, setState] =useState<File | null>(null);
 
-    });
+    const handleImageUpload = async () => {
+        console.log(state)
+        const token = localStorage.getItem("token");
+
+        try {
+            const response = await fetch("http://localhost:4000/ia/up", {
+                method: "POST",
+                headers: {
+                    "Authorization": `Bearer ${token}`, // Solo el token, sin 'Content-Type'
+                },
+                body:  "file: state.imgProfile"
+            });
+
+            if (!response.ok) {
+                throw new Error("Error en la carga de la imagen");
+            }
+
+            const res = await response.json();
+            console.log("Imagen cargada exitosamente:", res);
+        } catch (error) {
+            console.error("Error al cargar la imagen:", error);
+        }
+    };
 
     const handleChange = (newImageSrc: string, key: string) => {
         setState((prevState: any) => ({ ...prevState, [key]: newImageSrc }));
@@ -80,11 +100,19 @@ const datos: React.FC<datosProps> = () => {
             </div>
         )
     }
+    const [imgProfile, setImgProfile] = useState<File | null>(null);
+    const handleImageChange2 = (event: React.ChangeEvent<HTMLInputElement>) => {
+        if (event.target.files && event.target.files[0]) {
+            setImgProfile(event.target.files[0]);
+        }
+    };
 
+    console.log(imgProfile)
 
     return (
         <Layout where='usuario'>
             <HeaderGhost />
+            <input type="file" onChange={handleImageChange2} />
             <div className="container-up-img-analizer">
                 <div className="internal-container">
                     <div className="container-img-analizer">
@@ -110,9 +138,12 @@ const datos: React.FC<datosProps> = () => {
                             <ImgExample />
                         </div>
                     </div>
+                    <BtnNormalBasic className="btnCargarImg" onClick={() => { handleImageUpload() }}>
+                        Enviar Imagen
+                    </BtnNormalBasic>
                     <div className="for-is">
                         <h2>Propósito del Uso de la Imagen</h2>
-                        <p>
+                        <p className='description'>
                             La imagen será utilizada para llevar a cabo un reconocimiento facial basado en inteligencia artificial, con el objetivo de determinar la colorimetría personalizada del rostro. El análisis estará enfocado exclusivamente en las características físicas visibles del rostro, considerando principalmente:
                         </p>
                         <ul>
@@ -132,7 +163,7 @@ const datos: React.FC<datosProps> = () => {
                     </div>
                     <div className="consejos">
                         <h2>Consejos</h2>
-                        <p>
+                        <p className='description'>
                             Para garantizar que el análisis sea lo más preciso posible, se necesita una imagen que cumpla con los requisitos mencionados (iluminación adecuada, sin filtros, etc.), ya que cualquier interferencia puede alterar los resultados y afectar la calidad de las recomendaciones generadas.
                         </p>
                         <Collapsible
