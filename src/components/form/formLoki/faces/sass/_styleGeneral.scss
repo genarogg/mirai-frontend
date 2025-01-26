@@ -30,13 +30,13 @@
         }
 
         .right {
-            @include fn.height(550px);
+            @include fn.height(600px);
             border: var.$border-color;
             transition: all ease 1.6s;
             z-index: 4;
 
             &.social{
-                @include fn.height(600px);
+                @include fn.height(670px);
             }
         }
     }

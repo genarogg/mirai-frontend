@@ -73,7 +73,7 @@ const ResetPassWord: React.FC<ResetPassWordProps> = ({ cardState }) => {
                     onChange={handleChange}
                 />
 
-                <BtnSubmitBasic
+                {/* <BtnSubmitBasic
                     formData={{
                         data: inputRef.current
                     }}
@@ -81,7 +81,7 @@ const ResetPassWord: React.FC<ResetPassWordProps> = ({ cardState }) => {
                     push="#"
                 >
                     Recuperar cuenta
-                </BtnSubmitBasic>
+                </BtnSubmitBasic> */}
 
                 <div className="text-recovery">
                     <span>

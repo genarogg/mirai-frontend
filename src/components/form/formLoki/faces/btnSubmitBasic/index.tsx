@@ -1,82 +1,123 @@
-import React, { useState } from 'react'
+"use client";
+import React, { useState, useEffect } from 'react'
+
 import "./_btnSubmitBasic.scss"
 import { useGoogleReCaptcha } from 'react-google-recaptcha-v3';
-import { RECAPTCHA_KEY, URL_BACKEND } from "@env";
-
+import { RECAPTCHA_KEY } from "@env";
 import { notify, A } from "@nano"
 
-interface BtnSubmitBasicProps<T> {
+import { useMutation } from '@apollo/client';
+import { CREATE_USER_MUTATION, LOGIN_USER_MUTATION } from '@query';
+
+interface BtnSubmitBasicProps {
   children: React.ReactNode;
   className?: string;
   id?: string;
   disable?: boolean;
-  formData: T;
+  formData: any;
   endpoint: string;
-  push: string
+  push?: string
 }
 
-const BtnSubmitBasic = <T,>({
+const BtnSubmitBasic: React.FC<BtnSubmitBasicProps> = ({
   children,
   className = "",
   id = "",
   formData,
   endpoint,
   push = "/"
-}: BtnSubmitBasicProps<T>) => {
-
-  const [loading, setLoading] = useState(false);
+}) => {
   const { executeRecaptcha } = useGoogleReCaptcha();
+  const [createUser] = useMutation(CREATE_USER_MUTATION);
+  const [loginUser] = useMutation(LOGIN_USER_MUTATION);
+  const [loading, setLoading] = useState(false);
 
-  let token = "";
+
+
 
   const handleSubmit = async () => {
+    let token = localStorage.getItem("token");
+    let recaptcha = "";
 
     if (RECAPTCHA_KEY && executeRecaptcha) {
       token = await executeRecaptcha("submit");
     }
-
     const data = {
-      ...formData,
+      name: formData.current.name,
+      lastName: formData.current.lastName,
+      email: formData.current.email,
+      password: formData.current.password,
       token,
-    }
+      recaptcha
+    };
 
-    fetch(`${URL_BACKEND}/auth${endpoint}`, {
-      method: "POST",
-      body: JSON.stringify(data),
-      headers: {
-        "Content-Type": "application/json",
-      },
-    })
-      .then((response) => response.json())
-      .then((data) => {
+    try {
+      let response;
+      let responseData;
 
-        if (data.error) {
-          notify({ type: "error", message: data.message })
+      if (endpoint === "register") {
+        if (data.password.length < 8 || data.password.length > 16) {
+          notify({ type: "error", message: "La contraseña debe tener al menos 8 caracteres" });
           return;
         }
 
-        localStorage.setItem("token", data.token);
+        const passwordRegex = /^(?=.*[a-zA-Z])(?=.*[0-9])(?=.*[^\w\s])[A-Za-z0-9\S]{8,16}$/;
+        if (!passwordRegex.test(data.password)) {
+          notify({ type: "error", message: "La contraseña debe ser alfanumérica" });
+          return;
+        }
 
-        notify({ type: "success", message: data.message })
+        if (data.password !== formData.current.confirmPassword) {
+          notify({ type: "error", message: "Las contraseñas no coinciden" });
+          return;
+        }
 
-        //redireccionar el usuario con el api de nextjs
-        A({ type: "push", href: push })
-      })
-      .catch((error) => console.error(error)
-      ).finally(() => setLoading(false));
+        response = await createUser({ variables: { input: data } })
+        responseData = response.data.createUser
+      }
+
+      if (endpoint === "login") {
+        response = await loginUser({ variables: { input: data } })
+        responseData = response.data.loginUser
+      }
+
+
+
+      if (responseData.message !== "Usuario creado exitosamente" &&
+          responseData.message !== "Inicio de sesión exitoso") {
+        notify({ type: responseData.type, message: responseData.message });
+
+        return;
+      }
+
+      notify({ type: responseData.type, message: responseData.message });
+
+      localStorage.setItem("token", responseData.token);
+
+      document.getElementById(endpoint + "next")?.click();
+
+    } catch (error) {
+      notify({ type: "error", message: "Error al crear el usuario" });
+      console.error(error);
+    } finally {
+      setLoading(false);
+    }
   }
 
   return (
-    <div className={`btn-submit-basic ${className}`} id={id}>
-      <button
-        disabled={loading}
-        onClick={() => {
-          setLoading(true);
-          handleSubmit();
-        }}>
-        {children}
-      </button>
-    </div>
+    <>
+      <div className={`btn-submit-basic ${className}`} id={id}>
+        <button
+          disabled={loading}
+          onClick={() => {
+            setLoading(true);
+            handleSubmit();
+          }}>
+          {children}
+        </button>
+      </div>
+      <A href={push} id={endpoint + "next"} style={{ display: "none" }}></A>
+    </>
   );
 };
 

@@ -10,6 +10,10 @@
     "nanify": "node ./node_modules/nanify/fn/moveComponents.js"
   },
   "dependencies": {
+    "@apollo/client": "^3.12.7",
+    "@apollo/server": "^4.11.3",
+    "@as-integrations/next": "^3.2.0",
+    "graphql": "^16.10.0",
     "next": "14.2.23",
     "ogl": "^1.0.10",
     "react": "^18",

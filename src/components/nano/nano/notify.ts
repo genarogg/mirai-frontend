@@ -7,7 +7,7 @@ interface ToastProps {
 }
 
 const defaultToastConfig: ToastOptions = {
-  position: 'top-right' as ToastPosition,
+  position: 'bottom-center' as ToastPosition,
   autoClose: 5000,
   hideProgressBar: false,
   closeOnClick: true,

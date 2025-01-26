@@ -11,7 +11,6 @@ import { MdLock } from "react-icons/md";
 import HeadBtn from "./global/HeadBtn";
 import RedesLogin from './global/RedesLogin';
 
-
 interface LoginProps {
     cardState: (css: string) => void;
     register: boolean;
@@ -77,7 +76,7 @@ const Login: React.FC<LoginProps> = ({ cardState, register, reset, social = fals
 
                     <Input
                         type="password"
-                        name="passwordLogin"
+                        name="password"
                         placeholder={"Contraseña"}
                         icon={<MdLock />}
                         onChange={handleChange}
@@ -91,12 +90,9 @@ const Login: React.FC<LoginProps> = ({ cardState, register, reset, social = fals
                     {social && <RedesLogin />}
 
                     <BtnSubmitBasic
-                        formData={{
-                            data: inputRef,
-                            check: isChecked
-                        }}
-                        endpoint="/login"
-                        push="/"
+                         formData={inputRef}
+                         endpoint="login"
+                         push="/"
                     >
                         Iniciar sesión
                     </BtnSubmitBasic>

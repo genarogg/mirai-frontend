@@ -4,6 +4,9 @@ import "../sass/style.scss"
 import 'tippy.js/dist/tippy.css';
 import 'tippy.js/animations/shift-away.css';
 
+import { ToastContainer } from "react-toastify"
+
+import GraphqlProvider from "../graphql/GraphqlProvider";
 
 export const metadata: Metadata = {
   title: "Mirai",
@@ -34,9 +37,12 @@ export default function RootLayout({
 
 
       </head>
-      <body className="mirai">
-        {children}
-      </body>
+      <GraphqlProvider>
+        <body className="mirai">
+          {children}
+          <ToastContainer />
+        </body>
+      </GraphqlProvider>
     </html>
   );
 }

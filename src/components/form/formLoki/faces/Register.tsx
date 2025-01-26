@@ -16,6 +16,7 @@ interface RegisterProps {
 const Register: React.FC<RegisterProps> = ({ cardState, social = false }) => {
     const inputRef = useRef({
         name: "",
+        lastName: "",
         email: "",
         password: "",
         confirmPassword: ""
@@ -24,11 +25,6 @@ const Register: React.FC<RegisterProps> = ({ cardState, social = false }) => {
     const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
         const { name, value } = e.target;
         inputRef.current = { ...inputRef.current, [name]: value };
-    };
-
-    const handleSubmit = (e: React.FormEvent) => {
-        e.preventDefault();
-        console.log(inputRef.current);
     };
 
     return (
@@ -40,6 +36,14 @@ const Register: React.FC<RegisterProps> = ({ cardState, social = false }) => {
                     type="text"
                     name="name"
                     placeholder="Nombre"
+                    icon={<BsPersonFill />}
+                    onChange={handleChange}
+                />
+
+                <Input
+                    type="text"
+                    name="lastName"
+                    placeholder="Apellido"
                     icon={<BsPersonFill />}
                     onChange={handleChange}
                 />
@@ -72,11 +76,9 @@ const Register: React.FC<RegisterProps> = ({ cardState, social = false }) => {
                 {social && <RedesLogin />}
 
                 <BtnSubmitBasic
-                    formData={{
-                        data: inputRef,
-                    }}
-                    endpoint="/register"
-                    push="/"
+                    formData={inputRef}
+                    endpoint="register"
+                    push="/usuario/datos"
                 >
                     Registrarse
                 </BtnSubmitBasic>
@@ -87,7 +89,7 @@ const Register: React.FC<RegisterProps> = ({ cardState, social = false }) => {
                     </span>
                 </div>
             </form>
-        </div>
+        </div >
     );
 }
 

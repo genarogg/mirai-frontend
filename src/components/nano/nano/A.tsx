@@ -2,10 +2,9 @@
 
 import React from 'react';
 import Link from "next/link";
-import { useRouter } from "next/navigation";
-
 interface AProps {
   href: string;
+  id?: string;
   type?: "btn" | "mailto" | "a" | "push";
   children?: React.ReactNode;
   className?: string;
@@ -13,31 +12,29 @@ interface AProps {
   onClick?: () => void;
 }
 
-const A: React.FC<AProps> = ({ href, type, children, className = " ", onClick, style }) => {
-  const router = useRouter();
+const A: React.FC<AProps> = ({ href, type, children, className = " ", onClick, style, id = "" }) => {
+
 
   switch (type) {
     case undefined:
       return (
-        <Link href={href} className={className} style={style}>
+        <Link href={href} className={className} style={style} id={id}>
           {children}
         </Link>
       );
     case "btn":
       return (
-        <Link href={href} className={className} style={style} role="button" onClick={onClick}>
+        <Link href={href} className={className} style={style} id={id} role="button" onClick={onClick}>
           {children}
         </Link>
       );
     case "a":
       return (
-        <a href={href} target="_blank" rel="noreferrer" className={className} style={style}>
+        <a href={href} target="_blank" rel="noreferrer" className={className} style={style} id={id}>
           {children}
         </a>
       );
-    case "push":
-      router.push(href);
-      return null;
+
     default:
       return null;
   }
