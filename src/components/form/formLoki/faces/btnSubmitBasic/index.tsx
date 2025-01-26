@@ -32,9 +32,6 @@ const BtnSubmitBasic: React.FC<BtnSubmitBasicProps> = ({
   const [loginUser] = useMutation(LOGIN_USER_MUTATION);
   const [loading, setLoading] = useState(false);
 
-
-
-
   const handleSubmit = async () => {
     let token = localStorage.getItem("token");
     let recaptcha = "";

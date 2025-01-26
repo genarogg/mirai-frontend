@@ -8,7 +8,7 @@ interface authProps {
 
 const auth: React.FC<authProps> = () => {
     return (
-        <Layout>
+        <Layout where='usuario'>
             <Auth />
         </Layout>
     );
