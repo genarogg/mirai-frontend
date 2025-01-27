@@ -5,7 +5,7 @@ import HeaderGhost from '@components/layout/public/header/HeaderGhost'
 import Layout from '@components/layout/public/Layout'
 import { useRouter } from 'next/navigation';
 
-import { Img, InputImageUploader, notify } from "@nano"
+import { Img, InputImageUploader } from "@nano"
 import BtnNormalBasic from '@components/btns/basic/btnNormalBasic'
 
 import imgExample from "@public/example-up/img-example.webp"
@@ -14,7 +14,7 @@ import Collapsible from '@components/Collapsible/Collapsible'
 
 import "../../sass/_imgPerfil.scss"
 
-import handleImageUploadPerfil from "./fn/handleImageUploadPerfil"
+import handleImageUploadChange from "./fn/handleImageUploadChange"
 
 interface ImgChageProps {
     footerData: any
@@ -73,7 +73,7 @@ const ImgChage: React.FC<ImgChageProps> = ({ footerData, imgsExmaple }) => {
                             }
                         </div>
                     </div>
-                    <BtnNormalBasic className="btnCargarImg" onClick={() => { handleImageUploadPerfil(state, router) }}>
+                    <BtnNormalBasic className="btnCargarImg" onClick={() => { handleImageUploadChange(state, router) }}>
                         Enviar Imagen
                     </BtnNormalBasic>
                     <div></div>
