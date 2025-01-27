@@ -1,13 +1,13 @@
 'use client'
 import React from 'react'
-import ImgPerfil from '@components/views/usuario/datos/imgs/ImgPerfil'
-import imgExample from "@public/example-up/img-example.webp"
+import ImgChage from '@components/views/usuario/datos/imgs/ImgChage'
+import imgExample from "@public/swiper/people-1.jpg"
 
-interface imgPerfilProps {
+interface imgChangeProps {
 
 }
 
-const imgPerfil: React.FC<imgPerfilProps> = () => {
+const imgChange: React.FC<imgChangeProps> = () => {
     const propositoUsoImagen = [
 
         "Color de Piel: Se analizarán los tonos y subtonos de la piel para clasificarlos en sistemas como Pantone Skintone, Fitzpatrick, Munsell, entre otros."
@@ -55,19 +55,12 @@ const imgPerfil: React.FC<imgPerfilProps> = () => {
     }
 
     const imgsExmaple = [
-        { imgsrc: imgExample, alt: "img" },
-        { imgsrc: imgExample, alt: "img" },
-        { imgsrc: imgExample, alt: "img" },
-        { imgsrc: imgExample, alt: "img" },
-        { imgsrc: imgExample, alt: "img" },
-        { imgsrc: imgExample, alt: "img" },
-        { imgsrc: imgExample, alt: "img" },
-        { imgsrc: imgExample, alt: "img" },
-        { imgsrc: imgExample, alt: "img" },
+        { imgsrc: imgExample, alt: "img", width: 500, height: 700 },
+
     ]
 
     return (
-        <ImgPerfil footerData={data} imgsExmaple={imgsExmaple}></ImgPerfil>);
+        <ImgChage footerData={data} imgsExmaple={imgsExmaple}></ImgChage>);
 }
 
-export default imgPerfil;
+export default imgChange;

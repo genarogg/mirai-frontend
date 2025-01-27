@@ -1,5 +1,26 @@
 @use "/src/sass/global/mixin" as fn;
 
+.usuario.change-for-img {
+
+    .container-up-img-analizer .internal-container .container-img-analizer .uploader-img-container {
+        max-width: 500px;
+        min-width: 500px;
+        min-height: 700px;
+        max-height: 700px;
+    }
+
+    .container-up-img-analizer .internal-container .container-ejemplos .ejemplos {
+        grid-template-columns: 1fr;
+        max-width: 500px;
+        min-width: 500px;
+        min-height: 700px;
+        max-height: 700px;
+        padding: 0
+    }
+
+
+}
+
 .container-up-img-analizer {
     width: 100%;
     display: flex;
@@ -14,6 +35,7 @@
 
         row-gap: 20px;
         column-gap: 100px;
+
         h2 {
             width: 100%;
             text-align: left;
