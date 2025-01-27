@@ -1,47 +1,79 @@
 'use client'
+
 import React, { useState } from 'react'
+import HeaderGhost from '@components/layout/public/header/HeaderGhost'
 import Layout from '@components/layout/public/Layout'
+import { useRouter } from 'next/navigation';
+
 import { Img, InputImageUploader, notify } from "@nano"
 import BtnNormalBasic from '@components/btns/basic/btnNormalBasic'
 
 import imgExample from "@public/example-up/img-example.webp"
-import HeaderGhost from '@components/layout/public/header/HeaderGhost'
 
 import Collapsible from '@components/Collapsible/Collapsible'
+
+import "./sass/_imgPerfil.scss"
+
 
 interface datosProps {
 
 }
 
 const datos: React.FC<datosProps> = () => {
-    const [state, setState] =useState<File | null>(null);
-
+    const [state, setState] = useState({
+        file: "",
+        base64: "",
+    });
+    
+    const router = useRouter();
+    
     const handleImageUpload = async () => {
-        console.log(state)
+
         const token = localStorage.getItem("token");
+
+
+        if(!state.file){
+            notify({
+                type: "warning",
+                message: "Debes de cargar una imagen",
+            });
+        }
+
+        const formData = new FormData();
+
+
+        if (state.file) {
+            formData.append("file", state.file);
+        }
 
         try {
             const response = await fetch("http://localhost:4000/ia/up", {
                 method: "POST",
                 headers: {
-                    "Authorization": `Bearer ${token}`, // Solo el token, sin 'Content-Type'
+                    "Authorization": `Bearer ${token}`,
                 },
-                body:  "file: state.imgProfile"
+                body: formData,
             });
 
             if (!response.ok) {
-                throw new Error("Error en la carga de la imagen");
+                throw new Error("Error en la solicitud");
             }
 
-            const res = await response.json();
-            console.log("Imagen cargada exitosamente:", res);
-        } catch (error) {
-            console.error("Error al cargar la imagen:", error);
-        }
-    };
+            const data = await response.json();
 
-    const handleChange = (newImageSrc: string, key: string) => {
-        setState((prevState: any) => ({ ...prevState, [key]: newImageSrc }));
+            notify({
+                type: data.type,
+                message: data.message,
+            });
+
+            console.log(data)
+
+            router.push("/usuario/seft");
+
+            console.log(data);
+        } catch (error) {
+            console.error("Error:", error);
+        }
     };
 
     const propositoUsoImagen = [
@@ -100,19 +132,11 @@ const datos: React.FC<datosProps> = () => {
             </div>
         )
     }
-    const [imgProfile, setImgProfile] = useState<File | null>(null);
-    const handleImageChange2 = (event: React.ChangeEvent<HTMLInputElement>) => {
-        if (event.target.files && event.target.files[0]) {
-            setImgProfile(event.target.files[0]);
-        }
-    };
-
-    console.log(imgProfile)
 
     return (
         <Layout where='usuario'>
             <HeaderGhost />
-            <input type="file" onChange={handleImageChange2} />
+
             <div className="container-up-img-analizer">
                 <div className="internal-container">
                     <div className="container-img-analizer">
@@ -120,9 +144,7 @@ const datos: React.FC<datosProps> = () => {
                         <InputImageUploader
                             htmlFor="cargar"
                             imgUrl={imgExample.src}
-                            handleChange={(newImageSrc) => {
-                                handleChange(newImageSrc, "imgProfile")
-                            }} />
+                            setState={setState} />
                     </div>
                     <div className="container-ejemplos">
                         <h2>Ejemplos:</h2>
@@ -141,6 +163,7 @@ const datos: React.FC<datosProps> = () => {
                     <BtnNormalBasic className="btnCargarImg" onClick={() => { handleImageUpload() }}>
                         Enviar Imagen
                     </BtnNormalBasic>
+                    <div></div>
                     <div className="for-is">
                         <h2>Propósito del Uso de la Imagen</h2>
                         <p className='description'>

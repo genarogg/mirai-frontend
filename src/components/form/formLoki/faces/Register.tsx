@@ -78,7 +78,7 @@ const Register: React.FC<RegisterProps> = ({ cardState, social = false }) => {
                 <BtnSubmitBasic
                     formData={inputRef}
                     endpoint="register"
-                    push="/usuario/datos"
+                    push="/usuario/datos/img-perfil"
                 >
                     Registrarse
                 </BtnSubmitBasic>

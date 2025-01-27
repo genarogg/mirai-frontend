@@ -36,4 +36,9 @@ ul {
 }
 
 
+.Toastify{
+  z-index: 1000000;
+  position: relative;
+}
+
 @include fn.scroll($color: var.$color-quaternary, $bgColor: var.$color-secondary);
