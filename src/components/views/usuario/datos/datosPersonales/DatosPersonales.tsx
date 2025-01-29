@@ -16,12 +16,16 @@ import FormInformacionPersonal from "./FormInformacionPersonal"
 import FormDemographics from "./FormDemographics"
 import FormPhysical from "./FormPhysical"
 
+import { useRouter } from 'next/navigation';
 
+import { notify } from "@nano";
 
 
 
 const MultiStepForm = () => {
     const [currentStep, setCurrentStep] = useState(0);
+
+    const router = useRouter();
 
     const inputRef = useRef<any>({
         phoneNumber: '',
@@ -63,7 +67,7 @@ const MultiStepForm = () => {
         inputRef.current = { ...inputRef.current, [name]: selectedOption.value };
     };
 
-    const handleSubmit = (e: React.FormEvent) => {
+    const handleSubmit = async (e: React.FormEvent) => {
         e.preventDefault();
 
         const userProfileData = {
@@ -77,16 +81,45 @@ const MultiStepForm = () => {
             gender: inputRef.current.gender,
             etnia: inputRef.current.etnia,
             idiomas: inputRef.current.idiomas,
-
             sexo: inputRef.current.sexo,
             altura: inputRef.current.altura,
             peso: inputRef.current.peso,
             tallaDeRopa: inputRef.current.tallaDeRopa,
-
         };
 
         console.log(userProfileData);
-        // Aquí puedes enviar userProfileData a tu backend
+
+        try {
+            const token = localStorage.getItem("token");
+
+            const response = await fetch("http://localhost:4000/user/datos", {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json",
+                    "Authorization": `Bearer ${token}`,
+                },
+                body: JSON.stringify(userProfileData),
+            });
+
+            if (!response.ok) {
+                throw new Error("Error en la solicitud");
+            }
+
+            const data = await response.json();
+
+            console.log(data);
+
+            notify({
+                type: data.type,
+                message: data.message,
+            });
+
+            localStorage.removeItem("primeraVez")
+            router.push("/usuario");
+
+        } catch (error) {
+            console.error("Error:", error);
+        }
     };
 
     const formSections = [
