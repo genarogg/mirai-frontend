@@ -1,6 +1,8 @@
 "use client";
 import React, { useState, useEffect } from 'react'
 
+import { useRouter } from 'next/navigation';
+
 import "./_btnSubmitBasic.scss"
 import { useGoogleReCaptcha } from 'react-google-recaptcha-v3';
 import { RECAPTCHA_KEY } from "@env";
@@ -31,6 +33,8 @@ const BtnSubmitBasic: React.FC<BtnSubmitBasicProps> = ({
   const [createUser] = useMutation(CREATE_USER_MUTATION);
   const [loginUser] = useMutation(LOGIN_USER_MUTATION);
   const [loading, setLoading] = useState(false);
+
+  const router = useRouter();
 
   const handleSubmit = async () => {
     let token = localStorage.getItem("token");
@@ -81,7 +85,7 @@ const BtnSubmitBasic: React.FC<BtnSubmitBasicProps> = ({
 
 
       if (responseData.message !== "Usuario creado exitosamente" &&
-          responseData.message !== "Inicio de sesión exitoso") {
+        responseData.message !== "Inicio de sesión exitoso") {
         notify({ type: responseData.type, message: responseData.message });
 
         return;
@@ -91,7 +95,10 @@ const BtnSubmitBasic: React.FC<BtnSubmitBasicProps> = ({
 
       localStorage.setItem("token", responseData.token);
 
-      document.getElementById(endpoint + "next")?.click();
+      if (endpoint === "register") {
+        localStorage.setItem("primeraVez", "primeraVez");
+        router.push("/usuario/datos/img-perfil");
+      }
 
     } catch (error) {
       notify({ type: "error", message: "Error al crear el usuario" });

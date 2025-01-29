@@ -1,0 +1,181 @@
+// Variables
+$primary: #3b82f6; // blue-500
+$primary-dark: #1d4ed8; // blue-700
+$success: #22c55e; // green-500
+$success-dark: #15803d; // green-700
+$gray: #6b7280; // gray-500
+$gray-dark: #374151; // gray-700
+$white: #ffffff;
+$black: #000000;
+
+// Mixins
+@mixin button($bg-color, $hover-color) {
+    background-color: $bg-color;
+    color: $white;
+    font-weight: bold;
+    padding: 8px 16px;
+    border-radius: 4px;
+    transition: background-color 0.3s ease;
+
+    &:hover {
+        background-color: $hover-color;
+    }
+
+    &:focus {
+        outline: none;
+        box-shadow: 0 0 0 3px rgba($bg-color, 0.5);
+    }
+}
+
+// Styles
+.multi-step-form {
+    max-width: 80%;
+    margin: 40px auto;
+    max-width: 800px;
+    
+   
+
+    form {
+        display: grid;
+        grid-gap: 40px;
+        gap: 20px;
+
+        .datos-step-1 {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+        }
+    }
+
+    .form-container {
+        background-color: rgba(#fff, .5);
+        backdrop-filter: blur(10px);
+        box-shadow: 0 0px 4px rgba($black, 0.3);
+        border-radius: 8px;
+        padding: 24px 32px 32px;
+        margin-bottom: 16px;
+
+    }
+
+    h2 {
+        font-size: 24px;
+        margin-bottom: 16px;
+        color: $gray-dark;
+    }
+
+    .input-group {
+        margin-bottom: 16px;
+    }
+
+    .container-input {
+        position: relative;
+        margin-bottom: 16px;
+
+        input {
+            width: 100%;
+            padding: 12px 16px;
+            //border: 1px solid $gray;
+            border-radius: 4px;
+            font-size: 16px;
+            transition: border-color 0.3s ease;
+
+            &:focus {
+                outline: none;
+                border-color: $primary;
+            }
+        }
+
+        .holder {
+            position: absolute;
+            left: 16px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: $gray;
+            transition: all 0.3s ease;
+            pointer-events: none;
+        }
+
+        &.focus .holder,
+        input:not(:placeholder-shown)+.holder {
+            top: 0;
+            font-size: 12px;
+            background-color: $white;
+            padding: 0 4px;
+        }
+    }
+
+    .select-container {
+        margin-bottom: 16px;
+
+        .react-select__control {
+            border-color: $gray;
+        }
+
+        .react-select__control--is-focused {
+            border-color: $primary;
+            box-shadow: 0 0 0 1px $primary;
+        }
+
+        .react-select__option--is-selected {
+            background-color: $primary;
+        }
+
+        .react-select__option--is-focused {
+            background-color: rgba($primary, 0.1);
+        }
+    }
+
+    .button-group {
+        display: flex;
+        justify-content: space-between;
+        margin-top: 16px;
+    }
+
+    .btn-prev {
+        @include button($gray, $gray-dark);
+    }
+
+    .btn-next {
+        @include button($primary, $primary-dark);
+    }
+
+    .btn-submit {
+        @include button($success, $success-dark);
+    }
+}
+
+// Responsive styles
+@media (max-width: 640px) {
+    .multi-step-form {
+        max-width: 100%;
+        padding: 0 16px;
+
+        .form-container {
+            padding: 16px;
+        }
+
+        .button-group {
+            flex-direction: column;
+            gap: 8px;
+        }
+
+        .btn-prev,
+        .btn-next,
+        .btn-submit {
+            width: 100%;
+        }
+    }
+}
+
+/* Asegúrate de que el contenedor principal tenga overflow: hidden */
+.multi-step-form {
+  overflow: hidden;
+  position: relative;
+}
+
+/* Ajusta los estilos del contenedor de la animación */
+.form-container {
+  width: 100%;
+  overflow: hidden;
+  position: relative;
+}

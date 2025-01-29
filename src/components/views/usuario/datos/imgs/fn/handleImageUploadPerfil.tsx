@@ -40,6 +40,11 @@ const handleImageUpload = async (state: any, router: any) => {
             message: data.message,
         });
 
+        if(localStorage.getItem("primeraVez") === "primeraVez") {
+            router.push("/usuario/datos/img-for-ia");
+            return;
+        }
+
         router.push("/usuario");
 
     } catch (error) {

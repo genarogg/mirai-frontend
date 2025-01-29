@@ -12,6 +12,8 @@ const seft: React.FC<seftProps> = () => {
         <>
             <Layout where='usuario'>
                 <HeaderGhost />
+
+                
             </Layout>
         </>
     );
