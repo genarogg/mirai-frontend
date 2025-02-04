@@ -16,6 +16,15 @@ import img4 from "@public/mainSliderHome/slider4.jpg";
 import img5 from "@public/mainSliderHome/slider5.jpg";
 import img6 from "@public/mainSliderHome/slider6.jpg";
 
+import imgCategoria1 from "@public/categoriaSlider/collection-circle-1.jpg";
+import imgCategoria2 from "@public/categoriaSlider/collection-circle-2.jpg";
+import imgCategoria3 from "@public/categoriaSlider/collection-circle-3.jpg";
+import imgCategoria4 from "@public/categoriaSlider/collection-circle-4.jpg";
+import imgCategoria5 from "@public/categoriaSlider/collection-circle-5.jpg";
+import imgCategoria6 from "@public/categoriaSlider/collection-circle-6.jpg";
+import imgCategoria7 from "@public/categoriaSlider/collection-circle-7.jpg";
+
+
 import imgDemo from "@public/swiper/05.jpg";
 
 interface homeProps {
@@ -94,14 +103,14 @@ const home: React.FC<homeProps> = () => {
     ];
 
     const dataCategoriasSlider = [
-        { name: 'Categoría 1', imgSrc: 'https://w0.peakpx.com/wallpaper/390/219/HD-wallpaper-abstract-color-cuadros-fondo-life.jpg' },
-        { name: 'Categoría 2', imgSrc: 'https://w0.peakpx.com/wallpaper/390/219/HD-wallpaper-abstract-color-cuadros-fondo-life.jpg' },
-        { name: 'Categoría 3', imgSrc: 'https://w0.peakpx.com/wallpaper/390/219/HD-wallpaper-abstract-color-cuadros-fondo-life.jpg' },
-        { name: 'Categoría 4', imgSrc: 'https://w0.peakpx.com/wallpaper/390/219/HD-wallpaper-abstract-color-cuadros-fondo-life.jpg' },
-        { name: 'Categoría 5', imgSrc: 'https://w0.peakpx.com/wallpaper/390/219/HD-wallpaper-abstract-color-cuadros-fondo-life.jpg' },
-        { name: 'Categoría 5', imgSrc: 'https://w0.peakpx.com/wallpaper/390/219/HD-wallpaper-abstract-color-cuadros-fondo-life.jpg' },
-        { name: 'Categoría 5', imgSrc: 'https://w0.peakpx.com/wallpaper/390/219/HD-wallpaper-abstract-color-cuadros-fondo-life.jpg' },
-        { name: 'Categoría 5', imgSrc: 'https://w0.peakpx.com/wallpaper/390/219/HD-wallpaper-abstract-color-cuadros-fondo-life.jpg' },
+        { name: 'Mujeres', imgSrc: imgCategoria1.src },
+        { name: 'Hombres', imgSrc: imgCategoria2.src },
+        { name: 'Prendas', imgSrc: imgCategoria3.src },
+        { name: 'Zapatos', imgSrc: imgCategoria4.src },
+        { name: 'Bolso', imgSrc: imgCategoria5.src },
+        { name: 'lentes', imgSrc: imgCategoria6.src },
+        { name: 'recientes', imgSrc: imgCategoria7.src },
+
     ];
 
     const data = [
