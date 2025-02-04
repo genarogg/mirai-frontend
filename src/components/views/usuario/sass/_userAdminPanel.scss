@@ -1,0 +1,111 @@
+// body {
+//     margin: 0;
+//     font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen", "Ubuntu", "Cantarell", "Fira Sans",
+//       "Droid Sans", "Helvetica Neue", sans-serif;
+//     -webkit-font-smoothing: antialiased;
+//     -moz-osx-font-smoothing: grayscale;
+//   }
+
+.usuario.panel {
+
+    h2 {
+        display: flex;
+
+        i {
+            margin-left: 20px;
+            font-size: 18px;
+        }
+    }
+}
+
+.admin-panel-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    // min-height: 100vh;
+    background: linear-gradient(90deg, #ffffff, #fce4ec, #e3f2fd);
+    padding: 1rem;
+}
+
+.admin-panel {
+    width: 100%;
+    max-width: 1200px;
+    background-color: rgba(255, 255, 255, 0.7);
+    backdrop-filter: blur(10px);
+    border-radius: 0.75rem;
+    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+    overflow: hidden;
+}
+
+.admin-panel-content {
+    padding: 2rem;
+}
+
+.admin-panel-title {
+    font-size: 2.25rem;
+    font-weight: bold;
+    color: #333333;
+    margin-bottom: 1.5rem;
+}
+
+.admin-panel-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 2rem;
+}
+
+@media (min-width: 768px) {
+    .admin-panel-grid {
+        grid-template-columns: 1fr 1fr;
+    }
+}
+
+.admin-panel-section {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.admin-panel-section-title {
+    font-size: 1.5rem;
+    font-weight: 600;
+    color: #333333;
+    margin-bottom: 1rem;
+}
+
+.info-item {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.info-item-icon {
+    color: #555555;
+}
+
+.info-item-label {
+    color: #555555;
+}
+
+.info-item-value {
+    font-weight: 500;
+    color: #333333;
+}
+
+.facial-analysis-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 1rem;
+}
+
+@media (min-width: 768px) {
+    .facial-analysis-grid {
+        grid-template-columns: 1fr 1fr;
+    }
+}
+
+@media (min-width: 1024px) {
+    .facial-analysis-grid {
+        grid-template-columns: 1fr 1fr 1fr;
+    }
+}

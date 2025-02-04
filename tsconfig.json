@@ -28,6 +28,9 @@
       "@fn/*": [
         "./src/functions/*"
       ],
+      "@query": [
+        "./src/graphql/query/index.ts"
+      ],
       "@env": [
         "./env.ts"
       ],
@@ -39,11 +42,8 @@
       ],
       "@hook/*": [
         "./src/hook/*"
+      ],
 
-      ],
-      "@query": [
-        "./src/graphql/query/index.ts"
-      ],
     }
   },
   "include": [

@@ -1,6 +1,9 @@
 "use client"
 
 import type React from "react"
+
+
+
 import { useState, useRef } from "react"
 import { motion, AnimatePresence } from "framer-motion"
 
@@ -78,7 +81,7 @@ const MultiStepForm = () => {
             postalCode: inputRef.current.postalCode,
             country: inputRef.current.country,
             dateOfBirth: inputRef.current.dateOfBirth,
-            gender: inputRef.current.gender,
+
             etnia: inputRef.current.etnia,
             idiomas: inputRef.current.idiomas,
             sexo: inputRef.current.sexo,

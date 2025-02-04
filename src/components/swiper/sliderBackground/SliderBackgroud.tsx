@@ -16,7 +16,7 @@ const SliderBackground: React.FC<SliderBackgroundProps> = ({ data, effect, id })
 
     return (
         <div className='containerSliderLg bg'>
-            <SwiperLGBackgroud effect={effect} id={id}>
+            <SwiperLGBackgroud effect={effect} id={id} >
                 {data.map((element: any, index: any) => (
                     <SwiperSlide key={index}>
                         <img src={element.img}

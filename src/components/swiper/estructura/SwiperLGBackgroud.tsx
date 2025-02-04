@@ -17,7 +17,7 @@ import 'swiper/css/effect-fade';
 import SwiperLGProps from './SwiperProps';
 
 const SwiperLGBackgroud: React.FC<SwiperLGProps> = ({ children, id, effect = "random", autoplay = {
-    delay: 300000, disableOnInteraction: false,
+    delay: 5000, disableOnInteraction: false,
 },
     height = "100dvh" }) => {
     const swiperRef = useRef<any>(null);

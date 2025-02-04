@@ -4,7 +4,7 @@
 .checkbox-basic {
   @include fn.center-y;
   cursor: pointer;
-  max-width: 190px;
+  max-width: 280px;
 
   display: grid;
   grid-template-columns: 1fr 7fr;

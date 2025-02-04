@@ -23,7 +23,7 @@ const FormDemographics: React.FC<FormDemographicsProps> = ({ handleSelectChange,
                     onChange={handleChange}
                 />
             </div>
-            <div className="select-container">
+            {/* <div className="select-container">
 
                 <Select
                     key="gender"
@@ -36,7 +36,7 @@ const FormDemographics: React.FC<FormDemographicsProps> = ({ handleSelectChange,
                     onChange={handleSelectChange('gender')}
                     placeholder="Genero"
                 />
-            </div>
+            </div> */}
             <div className="select-container">
                 <Select
                     key="etnia"
