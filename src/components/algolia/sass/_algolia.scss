@@ -39,11 +39,11 @@
         }
 
         &.title {
-            background-color: #eee;
+            background-color: #363636;
         }
 
         &:hover {
-            background-color: #eee;
+            background-color: #fff27c;
         }
 
 
@@ -61,6 +61,10 @@
             height: 36px;
             display: flex;
             align-items: center;
+
+            h3{
+                color: #363636;
+            }
         }
     }
 }
