@@ -27,6 +27,14 @@ import imgCategoria7 from "@public/categoriaSlider/collection-circle-7.jpg";
 
 import imgDemo from "@public/swiper/05.jpg";
 
+import imgMentor1 from "@public/homeMentor/mentor1.jpg";
+import imgMentor2 from "@public/homeMentor/mentor2.jpg";
+import imgMentor3 from "@public/homeMentor/mentor3.jpg";
+
+import imgMentor4 from "@public/homeMentor/mentor12.jpg";
+import imgMentor5 from "@public/homeMentor/mentor13.jpg";
+import imgMentor6 from "@public/homeMentor/mentor14.jpg";
+
 interface homeProps {
 
 }
@@ -114,23 +122,20 @@ const home: React.FC<homeProps> = () => {
     ];
 
     const data = [
-        { src: imgDemo, id: 'img1', alt: 'Descripción de la imagen 1', width: 600, height: 600, href: '/ruta1' },
-        { src: imgDemo, id: 'de5mcoaf', alt: 'imagen de fondo', width: 600, height: 600, href: '/' },
-        { src: imgDemo, id: 'dae5moaf', alt: 'imagen de fondo', width: 160, height: 190, href: '/' },
-        { src: imgDemo, id: 'daexZ5moaf', alt: 'imagen de fondo', width: 160, height: 190, href: '/' },
-        { src: imgDemo, id: 'de5mowaf', alt: 'imagen de fondo', width: 600, height: 600, href: '/' }
+        { src: imgMentor2, id: 'img1', alt: 'Descripción de la imagen 1', width: 600, height: 600, href: '/ruta1' },
+        { src: imgCategoria6, id: 'de5mcoaf', alt: 'imagen de fondo', width: 600, height: 600, href: '/' },
+        { src: imgMentor3, id: 'dae5moaf', alt: 'imagen de fondo', width: 160, height: 190, href: '/' },
+        { src: imgMentor6, id: 'daexZ5moaf', alt: 'imagen de fondo', width: 160, height: 190, href: '/' },
+        { src: imgMentor5, id: 'de5mowaf', alt: 'imagen de fondo', width: 600, height: 600, href: '/' }
     ];
 
     const data2 = [
-        { src: imgDemo, id: 'imsfg1', alt: 'Descripción de la imagen 1', width: 600, height: 600, href: '/ruta1' },
-        { src: imgDemo, id: 'de5msdfcoaf', alt: 'imagen de fondo', width: 600, height: 600, href: '/' },
-        { src: imgDemo, id: 'dasfde5moaf', alt: 'imagen de fondo', width: 160, height: 190, href: '/' },
-        { src: imgDemo, id: 'dasfdexZ5moaf', alt: 'imagen de fondo', width: 160, height: 190, href: '/' },
-        { src: imgDemo, id: 'de5mowsfdaf', alt: 'imagen de fondo', width: 600, height: 600, href: '/' }
+        { src: imgMentor4, id: 'imsfg1', alt: 'Descripción de la imagen 1', width: 600, height: 600, href: '/ruta1' },
+        { src: imgMentor2, id: 'de5msdfcoaf', alt: 'imagen de fondo', width: 600, height: 600, href: '/' },
+        { src: imgMentor1, id: 'dasfde5moaf', alt: 'imagen de fondo', width: 160, height: 190, href: '/' },
+        { src: imgMentor3, id: 'dasfdexZ5moaf', alt: 'imagen de fondo', width: 160, height: 190, href: '/' },
+        { src: imgMentor4, id: 'de5mowsfdaf', alt: 'imagen de fondo', width: 600, height: 600, href: '/' }
     ];
-
-
-
 
     return (
         <Layout>

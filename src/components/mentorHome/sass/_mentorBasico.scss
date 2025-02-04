@@ -37,7 +37,6 @@
 
     .box {
         //border: 1px solid blue;
-
         overflow: hidden;
         border: 3px solid #fff;
 
@@ -109,6 +108,9 @@
         }
     }
 
+    .responsiveImage{
+        background-attachment: initial !important;
+    }
     .link {
         background-color: rgba(#fff, 0.2);
 

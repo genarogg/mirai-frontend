@@ -29,7 +29,7 @@ const CategoriasSlider: React.FC<CategoriasSliderProps> = ({ data }) => {
         <div className="container-slider">
             <div className="internal-container">
                 <div className="header-slider">
-                    <h2>titulo</h2>
+                    <h2>Categorias</h2>
                     <A href="/categorias">
                         <label htmlFor="#">Ver todas</label>
                         <Icon icon={<MdArrowOutward />} />
