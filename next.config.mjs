@@ -16,6 +16,8 @@ const config = {
       "encrypted-tbn0.gstatic.com",
       "esprit.vteximg.com.br",
       "w0.peakpx.com",
+      "localhost",
+      "localhost:1337"
     ],
   },
 };
