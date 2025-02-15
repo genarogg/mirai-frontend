@@ -78,7 +78,7 @@ const AlgoliaSearch: React.FC<SearchItem> = ({
             onFocus={handleFocus}
             onBlur={handleBlur}
         >
-            <InstantSearchNext indexName="movie" searchClient={searchClient}>
+            <InstantSearchNext indexName="development_producto" searchClient={searchClient}>
                 <SearchBox
                     onQueryChange={handleQueryChange}
                     styleSearchBox={styleSearchBox}

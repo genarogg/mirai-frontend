@@ -12,11 +12,11 @@ const MainContent: React.FC<MainContentProps> = ({ context, setContext }) => {
     const renderComponent = () => {
         switch (context) {
             case "vendido":
-                return <Dinamic endpoint="" />;
+                return <Dinamic />;
             case "nuevo":
-                return <Dinamic endpoint="" />;
+                return <Dinamic />;
             case "oferta":
-                return <Dinamic endpoint="" />;
+                return <Dinamic />;
             default:
                 return <p>Error al cargar zona dinamica</p>;
         }

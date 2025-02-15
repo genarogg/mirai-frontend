@@ -12,6 +12,8 @@ import { FiShoppingBag } from "react-icons/fi";
 import { FaRegEye } from "react-icons/fa6";
 import { MdOutlineCompareArrows } from "react-icons/md";
 
+import Image from 'next/image';
+
 interface CardProductoAlanaProps {
     data: any
     id: string
@@ -35,16 +37,19 @@ const CardProductoAlana: React.FC<CardProductoAlanaProps> = ({ data, id }) => {
                         height="460px"
                         width='360px'
                         id={id}
-                        >
+                    >
                         {data.imgs.map((img: any, colorIndex: any) => (
                             <SwiperSlide key={colorIndex}>
-                                <img
+                                <Image
                                     src={img}
                                     className="swiper-gl-image"
                                     width={360}
                                     height={460}
                                     alt={data.titulo}
                                 />
+                                {/* <img
+
+                                /> */}
                             </SwiperSlide>
                         ))}
                     </SwiperLGTwoElements>

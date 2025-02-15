@@ -1,4 +1,3 @@
-
 @use "/src/sass/global/_mixin.scss" as fn;
 @use "/src/sass/global/variables.scss" as var;
 
@@ -7,6 +6,9 @@
     display: flex;
     max-width: 500px;
 
+    position: sticky;
+    top: 130px;
+
     .thumbs-swiper {
         width: 120px;
         height: 500px;
@@ -14,7 +16,7 @@
 
         .swiper-wrapper {
             display: flex;
-            
+
             align-items: center;
         }
 
@@ -39,18 +41,25 @@
         img {
             align-items: center;
             justify-content: center;
-            border-radius: 25px;
+            border-radius: 5px;
             object-fit: contain;
 
         }
     }
-    
-    .lg-producto-single{
-        canvas,img{
+
+    .lg-producto-single {
+
+        canvas,
+        img {
             border-radius: 10px;
             overflow: hidden;
-            
+
         }
     }
-    
+
+}
+
+.productReviewsAndComments {
+    margin-top: 70px;
+    padding-bottom: 70px;
 }

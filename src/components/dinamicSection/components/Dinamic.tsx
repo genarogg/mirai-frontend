@@ -1,154 +1,86 @@
 'use client'
-import React from 'react'
-import CardProductoAlana from '@components/card/singleProduct/CardProductoAlana'
-import { regexUrl } from '@fn/regexUtils'
-
+import React, { useEffect, useState } from 'react';
+import CardProductoAlana from '@components/card/singleProduct/CardProductoAlana';
+import { regexUrl } from '@fn/regexUtils';
 import "./sass/_dinamicCardContainer.scss";
+import { URL_STRIPI_GQL, URL_STRIPI } from '@env';
+
 
 interface DinamicProps {
-    endpoint: string
+
 }
 
-const Dinamic: React.FC<DinamicProps> = ({ endpoint }) => {
-    const data = [
-        {
-            titulo: "Prodwucto 2",
-            url: regexUrl("dewamo-url"),
-            imgs: [
-                "https://esprit.vteximg.com.br/arquivos/ids/1370194/34_432F001_GRI180403_0.jpg",
-                "https://esprit.vteximg.com.br/arquivos/ids/1370625/34_432F014_VER190516_0.jpg"
-            ],
-            precio: 120,
-            colores: ["#111", "#fff"],
-            tallas: ["S", "M", "L"]
-        },
-        {
-            titulo: "Prodwucto 2",
-            url: regexUrl("dewamo-url"),
-            imgs: [
-                "https://esprit.vteximg.com.br/arquivos/ids/1370194/34_432F001_GRI180403_0.jpg",
-                "https://esprit.vteximg.com.br/arquivos/ids/1370625/34_432F014_VER190516_0.jpg"
-            ],
-            precio: 120,
-            colores: ["#111", "#fff"],
-            tallas: ["S", "M", "L"]
-        },
-        {
-            titulo: "Prodwucato 3",
-            url: regexUrl("dwemo-url"),
-            imgs: [
-                "https://esprit.vteximg.com.br/arquivos/ids/1370194/34_432F001_GRI180403_0.jpg",
-                "https://esprit.vteximg.com.br/arquivos/ids/1370625/34_432F014_VER190516_0.jpg"
-            ],
-            precio: 90,
-            colores: ["#222", "#808"],
-            tallas: ["M", "L", "XL"]
-        },
-        {
-            titulo: "Prodwucato 3",
-            url: regexUrl("dwemo-url"),
-            imgs: [
-                "https://esprit.vteximg.com.br/arquivos/ids/1370194/34_432F001_GRI180403_0.jpg",
-                "https://esprit.vteximg.com.br/arquivos/ids/1370625/34_432F014_VER190516_0.jpg"
-            ],
-            precio: 90,
-            colores: ["#222", "#808"],
-            tallas: ["M", "L", "XL"]
-        },
-        {
-            titulo: "Prodwucto 2",
-            url: regexUrl("dewamo-url"),
-            imgs: [
-                "https://esprit.vteximg.com.br/arquivos/ids/1370194/34_432F001_GRI180403_0.jpg",
-                "https://esprit.vteximg.com.br/arquivos/ids/1370625/34_432F014_VER190516_0.jpg"
-            ],
-            precio: 120,
-            colores: ["#111", "#fff"],
-            tallas: ["S", "M", "L"]
-        },
-        {
-            titulo: "Prodwucto 2",
-            url: regexUrl("dewamo-url"),
-            imgs: [
-                "https://esprit.vteximg.com.br/arquivos/ids/1370194/34_432F001_GRI180403_0.jpg",
-                "https://esprit.vteximg.com.br/arquivos/ids/1370625/34_432F014_VER190516_0.jpg"
-            ],
-            precio: 120,
-            colores: ["#111", "#fff"],
-            tallas: ["S", "M", "L"]
-        },
-        {
-            titulo: "Prodwucato 3",
-            url: regexUrl("dwemo-url"),
-            imgs: [
-                "https://esprit.vteximg.com.br/arquivos/ids/1370194/34_432F001_GRI180403_0.jpg",
-                "https://esprit.vteximg.com.br/arquivos/ids/1370625/34_432F014_VER190516_0.jpg"
-            ],
-            precio: 90,
-            colores: ["#222", "#808"],
-            tallas: ["M", "L", "XL"]
-        },
-        {
-            titulo: "Prodwucato 3",
-            url: regexUrl("dwemo-url"),
-            imgs: [
-                "https://esprit.vteximg.com.br/arquivos/ids/1370194/34_432F001_GRI180403_0.jpg",
-                "https://esprit.vteximg.com.br/arquivos/ids/1370625/34_432F014_VER190516_0.jpg"
-            ],
-            precio: 90,
-            colores: ["#222", "#808"],
-            tallas: ["M", "L", "XL"]
-        },
-        {
-            titulo: "Prodwucto 2",
-            url: regexUrl("dewamo-url"),
-            imgs: [
-                "https://esprit.vteximg.com.br/arquivos/ids/1370194/34_432F001_GRI180403_0.jpg",
-                "https://esprit.vteximg.com.br/arquivos/ids/1370625/34_432F014_VER190516_0.jpg"
-            ],
-            precio: 120,
-            colores: ["#111", "#fff"],
-            tallas: ["S", "M", "L"]
-        },
-        {
-            titulo: "Prodwucto 2",
-            url: regexUrl("dewamo-url"),
-            imgs: [
-                "https://esprit.vteximg.com.br/arquivos/ids/1370194/34_432F001_GRI180403_0.jpg",
-                "https://esprit.vteximg.com.br/arquivos/ids/1370625/34_432F014_VER190516_0.jpg"
-            ],
-            precio: 120,
-            colores: ["#111", "#fff"],
-            tallas: ["S", "M", "L"]
-        },
-        {
-            titulo: "Prodwucato 3",
-            url: regexUrl("dwemo-url"),
-            imgs: [
-                "https://esprit.vteximg.com.br/arquivos/ids/1370194/34_432F001_GRI180403_0.jpg",
-                "https://esprit.vteximg.com.br/arquivos/ids/1370625/34_432F014_VER190516_0.jpg"
-            ],
-            precio: 90,
-            colores: ["#222", "#808"],
-            tallas: ["M", "L", "XL"]
-        },
-        {
-            titulo: "Prodwucato 3",
-            url: regexUrl("dwemo-url"),
-            imgs: [
-                "https://esprit.vteximg.com.br/arquivos/ids/1370194/34_432F001_GRI180403_0.jpg",
-                "https://esprit.vteximg.com.br/arquivos/ids/1370625/34_432F014_VER190516_0.jpg"
-            ],
-            precio: 90,
-            colores: ["#222", "#808"],
-            tallas: ["M", "L", "XL"]
-        },
-    ];
+const Dinamic: React.FC<DinamicProps> = () => {
+    const [data, setData] = useState([]);
+
+    useEffect(() => {
+        const fetchProducts = async () => {
+            try {
+                const response = await fetch(URL_STRIPI_GQL, {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify({
+                        query: `
+                            query {
+                                products(
+                                    filters: {}
+                                    sort: ["tallas.stock:asc"]
+                                    pagination: { limit: 12 }
+                                ) {
+                                    titulo
+                                    base_price
+                                    tallas {
+                                        talla
+                                        color
+                                        stock
+                                    }
+                                    img_main {
+                                        url
+                                        name
+                                    }
+                                    img_secundary {
+                                        url
+                                        name
+                                    }
+                                }
+                            }
+                        `,
+                    }),
+                });
+
+                const result = await response.json();
+                console.log(result);
+                const formattedData = result.data.products.map((product: any) => ({
+                    titulo: product.titulo,
+                    url: regexUrl(product.titulo),
+                    imgs: [
+                        URL_STRIPI +"producto/"+ product.img_main.url,
+                        URL_STRIPI +"producto/"+ product.img_secundary.url
+                    ],
+                    precio: product.base_price,
+                    colores: product.tallas.map((talla: any) => extraerCodigoColor(talla)),
+                    tallas: product.tallas.map((talla: any) => talla.talla)
+                }));
+                setData(formattedData);
+            } catch (error) {
+                console.error('Error fetching products:', error);
+            }
+        };
+
+        fetchProducts();
+    }, []);
+
+    function extraerCodigoColor(item: any) {
+        if (!item.color.includes("_")) return null; // Verifica si el formato es correcto
+        const partes = item.color.split("_");
+        return `#${partes[1]}`;
+    }
 
     return (
         <div className="external-dinamic-card-container">
             <div className="dinamic-card-container">
-
                 {data.slice(0, 4).map((item, index) => (
                     <CardProductoAlana key={index} data={item} id="t1" />
                 ))}
@@ -158,7 +90,6 @@ const Dinamic: React.FC<DinamicProps> = ({ endpoint }) => {
                 {data.slice(8, 12).map((item, index) => (
                     <CardProductoAlana key={index} data={item} id="t3" />
                 ))}
-
             </div>
         </div>
     );

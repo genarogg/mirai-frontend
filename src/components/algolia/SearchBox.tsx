@@ -48,7 +48,7 @@ const SearchBox: React.FC<SearchBoxProps> = ({
                 if (charIndex < currentPhrase.length) {
                     setPlaceholder(currentPhrase.slice(0, charIndex + 1));
                     charIndex++;
-                    typingTimeout = setTimeout(typePlaceholder, typingSpeed);  // Espera antes de escribir el siguiente carácter
+                    typingTimeout = setTimeout(typePlaceholder, typingSpeed);  
                 } else {
                     // Pausa antes de continuar con la siguiente frase
                     pauseTimeout = setTimeout(() => {
@@ -76,6 +76,7 @@ const SearchBox: React.FC<SearchBoxProps> = ({
         onQueryChange(value);
     };
 
+    
     return (
         <div className={`algoliaBox notHover
         ${styleSearchBox}

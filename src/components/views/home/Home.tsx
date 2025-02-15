@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import Layout from '@components/layout/public/Layout';
 import SliderBackground from '@components/swiper/sliderBackground/SliderBackgroud';
 import CategoriasSlider from '@components/sections/categoriasSlider/CategoriasSlider';
@@ -6,6 +6,10 @@ import CategoriasSlider from '@components/sections/categoriasSlider/CategoriasSl
 import MentorBasico from '@components/mentorHome/MentorBasico';
 
 import DinamicZone from '@components/dinamicSection/DinamicZone';
+
+import { URL_STRIPI, URL_STRIPI_GQL } from "@env"
+
+
 
 import "./sass/_home.scss";
 
@@ -110,16 +114,45 @@ const home: React.FC<homeProps> = () => {
         }
     ];
 
-    const dataCategoriasSlider = [
-        { name: 'Mujeres', imgSrc: imgCategoria1.src },
-        { name: 'Hombres', imgSrc: imgCategoria2.src },
-        { name: 'Prendas', imgSrc: imgCategoria3.src },
-        { name: 'Zapatos', imgSrc: imgCategoria4.src },
-        { name: 'Bolso', imgSrc: imgCategoria5.src },
-        { name: 'lentes', imgSrc: imgCategoria6.src },
-        { name: 'recientes', imgSrc: imgCategoria7.src },
+    const [categorias, setCategorias] = useState([]);
 
-    ];
+    useEffect(() => {
+        const fetchCategorias = async () => {
+            try {
+                const response = await fetch(URL_STRIPI_GQL, {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify({
+                        query: `
+                            query {
+                                categorias {
+                                nombre
+                                    img {
+                                        url
+                                    }
+                                }
+                            }
+                        `,
+                    }),
+                });
+
+                const result = await response.json();
+                setCategorias(result.data.categorias);
+            } catch (error) {
+                console.error('Error fetching categorias:', error);
+            }
+        };
+
+        fetchCategorias();
+    }, []);
+
+    const dataCategoriasSlider = categorias.map((categoria: any) => ({
+        name: categoria.nombre,
+        imgSrc: URL_STRIPI + categoria.img.url,
+    }));
+
 
     const data = [
         { src: imgMentor2, id: 'img1', alt: 'Descripción de la imagen 1', width: 600, height: 600, href: '/ruta1' },
