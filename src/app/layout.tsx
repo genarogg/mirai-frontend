@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import "../sass/style.scss"
-
+import "../sass/globals.css"
 import 'tippy.js/dist/tippy.css';
 import 'tippy.js/animations/shift-away.css';
 

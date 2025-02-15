@@ -1,13 +1,9 @@
-'use client'
-import React from 'react'
-import SingleProduct from '@components/views/singleProduct/SingleProduct'
-interface singleProductProps {
+import ProductDetails from "./ProductDetails"
 
-}
-
-const product = {
-    id: 1,
-    // id: params.id,
+export default function ProductPage({ params }: { params: { id: string } }) {
+  // En una aplicación real, aquí se obtendría el producto basado en el ID
+  const product = {
+    id: params.id,
     name: "Camiseta de Algodón Premium",
     price: 29.99,
     originalPrice: 39.99,
@@ -98,8 +94,6 @@ const product = {
     ],
   }
 
-const singleProduct: React.FC<singleProductProps> = () => {
-    return (<SingleProduct product={product}/>);
+  return <ProductDetails product={product} />
 }
 
-export default singleProduct;
