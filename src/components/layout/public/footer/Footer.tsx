@@ -1,7 +1,7 @@
 import React from 'react';
 import './sass/_footer.scss';
 import { LogoGenarogg, A, Icon } from "@nano";
-import { FaHourglassEnd } from "react-icons/fa6";
+import { FaFacebook, FaInstagram, FaTwitter, FaMapMarkerAlt, FaEnvelope, FaPhone } from "react-icons/fa";
 
 interface FooterProps { }
 
@@ -9,30 +9,29 @@ const Footer: React.FC<FooterProps> = () => {
     const currentYear = new Date().getFullYear();
 
     const footerData = {
-        logo: 'alana',
-        address: '1234 Fashion Street, Suite 567, New York, NY 10001',
-        email: 'info@fashionshop.com',
-        phone: '(212) 555-1234',
+        logo: 'Mirai',
+        address: '789 Avenida de la Moda, Suite 300, Los Ángeles, CA 90015',
+        email: 'soporte@Mirai.com',
+        phone: '(310) 555-7890',
         helpLinks: [
-            { href: '/', text: 'Order Status' },
-            { href: '/', text: 'Returns + Exchanges' },
-            { href: '/', text: 'Shipping' },
-            { href: '/', text: 'Terms + Conditions' },
-            { href: '/', text: 'FAQ’s' },
-            { href: '/', text: 'Compare' },
-            { href: '/', text: 'My Wishlist' },
+            { href: '/estado-pedido', text: 'Estado del Pedido' },
+            { href: '/devoluciones', text: 'Devoluciones y Cambios' },
+            { href: '/envios', text: 'Información de Envíos' },
+            { href: '/terminos', text: 'Términos y Condiciones' },
+            { href: '/faq', text: 'Preguntas Frecuentes' },
+            { href: '/comparar', text: 'Comparar Productos' },
+            { href: '/wishlist', text: 'Mi Lista de Deseos' },
         ],
         aboutLinks: [
-            { href: '/', text: 'About Us' },
-            { href: '/', text: 'Our Story' },
-            { href: '/', text: 'Careers' },
-            { href: '/', text: 'Press' },
+            { href: '/nosotros', text: 'Sobre Nosotros' },
+            { href: '/historia', text: 'Nuestra Historia' },
+            { href: '/empleos', text: 'Empleos' },
+            { href: '/prensa', text: 'Prensa' },
         ],
         socialLinks: [
-            { href: 'A', icon: <FaHourglassEnd /> },
-            { href: '#', icon: <FaHourglassEnd /> },
-            { href: '#', icon: <FaHourglassEnd /> },
-            { href: '#', icon: <FaHourglassEnd /> },
+            { href: 'https://facebook.com/Mirai', icon: <FaFacebook /> },
+            { href: 'https://instagram.com/Mirai', icon: <FaInstagram /> },
+            { href: 'https://twitter.com/Mirai', icon: <FaTwitter /> },
         ],
     };
 
@@ -47,40 +46,39 @@ const Footer: React.FC<FooterProps> = () => {
                         <ul>
                             <li>
                                 <label>
-                                    lorem ipsum dolor sit amet, consectetur adipisicing elit.
-                                    lorem ipsum dolor sit amet, consectetur adipisicing elit.
+                                    Descubre las últimas tendencias de moda y compra estilos exclusivos en Mirai.
+                                    Tu destino ideal para ropa y accesorios con estilo.
                                 </label>
                             </li>
                             <li>
                                 <label>
-                                    <Icon icon={<FaHourglassEnd />} />
-                                    <span>Address:</span>
+                                    <Icon icon={<FaMapMarkerAlt />} />
+                                    <span>Dirección:</span>
                                     <strong>{footerData.address}</strong>
                                 </label>
                             </li>
                             <li>
                                 <label>
-                                    <Icon icon={<FaHourglassEnd />} />
+                                    <Icon icon={<FaEnvelope />} />
                                     <span>Email:</span>
                                     <strong>{footerData.email}</strong>
                                 </label>
                             </li>
                             <li>
                                 <label>
-                                    <Icon icon={<FaHourglassEnd />} />
-                                    <span>Phone:</span>
+                                    <Icon icon={<FaPhone />} />
+                                    <span>Teléfono:</span>
                                     <strong>{footerData.phone}</strong>
                                 </label>
                             </li>
                         </ul>
                     </li>
                     <li className='col-2'>
-                        <h6>Help</h6>
+                        <h6>Ayuda</h6>
                         <ul>
                             {footerData.helpLinks.map((link, index) => (
                                 <li key={index}>
                                     <A href={link.href}>
-                                        <Icon icon={<FaHourglassEnd />} />
                                         <span>{link.text}</span>
                                     </A>
                                 </li>
@@ -88,12 +86,11 @@ const Footer: React.FC<FooterProps> = () => {
                         </ul>
                     </li>
                     <li className='col-3'>
-                        <h6>About us</h6>
+                        <h6>Sobre nosotros</h6>
                         <ul>
                             {footerData.aboutLinks.map((link, index) => (
                                 <li key={index}>
                                     <A href={link.href}>
-                                        <Icon icon={<FaHourglassEnd />} />
                                         <span>{link.text}</span>
                                     </A>
                                 </li>

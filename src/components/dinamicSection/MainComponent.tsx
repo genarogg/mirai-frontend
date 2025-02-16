@@ -2,6 +2,7 @@ import React from "react";
 import { SwitchTransition, CSSTransition } from "react-transition-group";
 import Vendido from "./components/Vendido";
 import Nuevo from "./components/Nuevo";
+import Oferta from "./components/Oferta";
 
 interface MainContentProps {
     context: string;
@@ -15,8 +16,8 @@ const MainContent: React.FC<MainContentProps> = ({ context, setContext }) => {
                 return <Vendido />;
             case "nuevo":
                 return <Nuevo />;
-            // case "oferta":
-            //     return <Dinamic />;
+            case "oferta":
+                return <Oferta />;
             default:
                 return <p>Error al cargar zona dinamica</p>;
         }
