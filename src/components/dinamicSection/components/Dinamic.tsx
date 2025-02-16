@@ -54,10 +54,10 @@ const Dinamic: React.FC<DinamicProps> = () => {
                 console.log(result);
                 const formattedData = result.data.products.map((product: any) => ({
                     titulo: product.titulo,
-                    url: regexUrl(product.titulo),
+                    url: "/producto/" + regexUrl(product.titulo),
                     imgs: [
-                        URL_STRIPI +"producto/"+ product.img_main.url,
-                        URL_STRIPI +"producto/"+ product.img_secundary.url
+                        URL_STRIPI + product.img_main.url,
+                        URL_STRIPI + product.img_secundary.url
                     ],
                     precio: product.base_price,
                     colores: product.tallas.map((talla: any) => extraerCodigoColor(talla)),
@@ -73,7 +73,7 @@ const Dinamic: React.FC<DinamicProps> = () => {
     }, []);
 
     function extraerCodigoColor(item: any) {
-        if (!item.color.includes("_")) return null; // Verifica si el formato es correcto
+        if (!item.color.includes("_")) return null; 
         const partes = item.color.split("_");
         return `#${partes[1]}`;
     }
