@@ -4,7 +4,7 @@
     z-index: 1000000;
     position: fixed;
     width: 100%;
-   
+
 
     .search {
         display: flex;
@@ -41,7 +41,7 @@
     height: 70px;
     padding: 5px 10px;
 
-  
+
 
     .logo {
         display: flex;
@@ -68,9 +68,15 @@
         justify-content: flex-end;
 
         .sign-in {
+            ul {
+                display: flex;
+                justify-content: flex-end;
+            }
+
             li {
                 padding: 0;
                 margin: 0;
+                margin-right: 20px;
 
                 a {
                     color: #fff;
@@ -79,6 +85,7 @@
                     border-radius: var.$border-radius;
                     height: 40px;
 
+                    text-transform: uppercase;
                     display: flex;
                     align-items: center;
                     transition: var.$transition;
@@ -124,6 +131,7 @@
                     li {
                         a {
                             margin-right: 20px;
+
                             .container-icono {
                                 .icon {
                                     svg {

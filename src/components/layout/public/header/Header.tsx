@@ -31,9 +31,9 @@ const Header: React.FC<HeaderProps> = () => {
     ]
 
     const navLogin = [
-        { href: "/usuario", icon: <LuUserRound /> },
-        { href: "/deseado", icon: <FiHeart /> },
-        { href: "/card", icon: <FiShoppingBag /> },
+        { href: "/login", label: "login", icon: <RiUser3Fill /> },
+        { href: "/usuario", label: "usuario", icon: <LuUserRound /> },
+        { href: "/playground", label: "playground", icon: <FiHeart /> },
     ]
 
     const categoryData = [
@@ -987,11 +987,11 @@ const Header: React.FC<HeaderProps> = () => {
             <>
                 <HeaderUp
                     logo={logo}
-                    navOuth={navOuth}
-                    navLogin={navLogin}
+                    navLogin={navOuth}
+                    navOuth={navLogin}
                     login={login}
                 />
-                <HeaderDown  />
+                <HeaderDown />
             </>
         );
     }

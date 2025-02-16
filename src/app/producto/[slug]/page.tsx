@@ -93,8 +93,6 @@ export default async function ProductPage({ params }: PageProps) {
 
   const { sizes, colors } = transformTallas(product.tallas);
 
-  console.log()
-
   const ultimateDataStatica = {
     id: "1",
     name: product.titulo,
@@ -189,8 +187,6 @@ export default async function ProductPage({ params }: PageProps) {
     // Opcional: Puedes renderizar una página 404 personalizada
     return <p>Producto no encontrado</p>;
   }
-
-
 
   return (
     <Layout>

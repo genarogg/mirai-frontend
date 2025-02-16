@@ -165,6 +165,8 @@ export default function ProductDetails({ product }: { product: Product }) {
     localStorage.setItem("cart", JSON.stringify(cart))
   }
 
+
+
   const handleTryOnGarment = () => {
     if (!userPhotoUpload.file) {
       console.error("Por favor, sube una foto tuya primero.")
@@ -172,6 +174,8 @@ export default function ProductDetails({ product }: { product: Product }) {
     }
     setIsAIGarmentModalOpen(true)
   }
+
+  
 
   return (
     <div className="container mx-auto px-4 py-8">
@@ -311,7 +315,7 @@ export default function ProductDetails({ product }: { product: Product }) {
         productName={product.name}
         productImage={base64Image}
       />
-      {/* <div className="mt-8 border-t pt-8">
+      <div className="mt-8 border-t pt-8">
         <h3 className="text-lg font-semibold mb-4">Sube tu foto para probar la prenda</h3>
         <div
           className="border-2 border-dashed rounded-lg p-8 text-center mb-4 relative"
@@ -352,7 +356,7 @@ export default function ProductDetails({ product }: { product: Product }) {
             </div>
           )}
         </div>
-      </div> */}
+      </div>
       <AIGarmentModal
         isOpen={isAIGarmentModalOpen}
         onClose={() => setIsAIGarmentModalOpen(false)}
