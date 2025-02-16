@@ -39,7 +39,7 @@ const CardProductoAlana: React.FC<CardProductoAlanaProps> = ({ data, id }) => {
                         id={id}
                     >
                         {data.imgs.map((img: any, colorIndex: any) => (
-                            <SwiperSlide key={colorIndex}>
+                            <SwiperSlide key={colorIndex} style={{ width: '360px', height: '460px' }}>
                                 <Image
                                     src={img}
                                     className="swiper-gl-image"
@@ -47,9 +47,6 @@ const CardProductoAlana: React.FC<CardProductoAlanaProps> = ({ data, id }) => {
                                     height={460}
                                     alt={data.titulo}
                                 />
-                                {/* <img
-
-                                /> */}
                             </SwiperSlide>
                         ))}
                     </SwiperLGTwoElements>

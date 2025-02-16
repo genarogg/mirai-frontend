@@ -20,8 +20,8 @@ const SwiperLGTwoElements: React.FC<SwiperLGProps> = ({
     children,
     id,
     effect = "random",
-    height = "100dvh",
-    width = "380px",
+    height,
+    width ,
     autoplay = {
         delay: 3000, disableOnInteraction: false,
     }
@@ -47,6 +47,7 @@ const SwiperLGTwoElements: React.FC<SwiperLGProps> = ({
             onMouseLeave={handleMouseLeave}
         >
             <Swiper
+      
                 ref={swiperRef}
                 style={{ height: height, width: width }}
                 effect="gl"

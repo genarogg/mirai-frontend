@@ -168,8 +168,9 @@ const home: React.FC<homeProps> = () => {
 
     return (
         <Layout>
+          
             <div className="slider-home">
-                <SliderBackground data={dataSliderBackground} effect="morph-x" id="principalSlider" />
+            <SliderBackground data={dataSliderBackground} effect="morph-x" id="principalSlider" />
                 <CategoriasSlider data={dataCategoriasSlider} />
 
                 <DinamicZone />

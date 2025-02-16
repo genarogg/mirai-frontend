@@ -15,6 +15,10 @@
 
     @include fn.square(360px, 580px);
 
+    canvas{
+        width: 358px !important;
+        height: 458px !important;
+    }
 
     .container-img {
         &:hover {
