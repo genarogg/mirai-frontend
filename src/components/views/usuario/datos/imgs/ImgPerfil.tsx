@@ -8,7 +8,7 @@ import { useRouter } from 'next/navigation';
 import { Img, InputImageUploader, notify } from "@nano"
 import BtnNormalBasic from '@components/btns/basic/btnNormalBasic'
 
-import imgExample from "@public/example-up/img-example.webp"
+import imgExample from "@public/example-up/cute-young-girl-laughs-teenager-white-shirt-positivity-happiness-white-background-closeup_120897-4551.png"
 
 import Collapsible from '@components/Collapsible/Collapsible'
 

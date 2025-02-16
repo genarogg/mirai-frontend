@@ -53,7 +53,7 @@ const SwiperLGBackgroud: React.FC<SwiperLGProps> = ({ children, id, effect = "ra
              
                 direction={'horizontal'}
                 speed={3000}
-                // autoplay={autoplay}
+                autoplay={autoplay}
                 loop={true}
                 spaceBetween={0}
                 touchReleaseOnEdges={true}

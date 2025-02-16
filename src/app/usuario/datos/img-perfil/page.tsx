@@ -1,7 +1,15 @@
 'use client'
 import React from 'react'
 import ImgPerfil from '@components/views/usuario/datos/imgs/ImgPerfil'
-import imgExample from "@public/example-up/img-example.webp"
+import imgExample1 from "@public/example-up/img-example-1.png"
+import imgExample2 from "@public/example-up/img-example-2.png"
+import imgExample3 from "@public/example-up/img-example-3.png"
+import imgExample4 from "@public/example-up/img-example-4.png"
+import imgExample5 from "@public/example-up/img-example-5.png"
+import imgExample6 from "@public/example-up/img-example-6.png"
+import imgExample7 from "@public/example-up/img-example-7.png"
+import imgExample8 from "@public/example-up/img-example-8.png"
+import imgExample9 from "@public/example-up/img-example-9.png"
 
 interface imgPerfilProps {
 
@@ -55,15 +63,15 @@ const imgPerfil: React.FC<imgPerfilProps> = () => {
     }
 
     const imgsExmaple = [
-        { imgsrc: imgExample, alt: "img" },
-        { imgsrc: imgExample, alt: "img" },
-        { imgsrc: imgExample, alt: "img" },
-        { imgsrc: imgExample, alt: "img" },
-        { imgsrc: imgExample, alt: "img" },
-        { imgsrc: imgExample, alt: "img" },
-        { imgsrc: imgExample, alt: "img" },
-        { imgsrc: imgExample, alt: "img" },
-        { imgsrc: imgExample, alt: "img" },
+        { imgsrc: imgExample1, alt: "img" },
+        { imgsrc: imgExample2, alt: "img" },
+        { imgsrc: imgExample3, alt: "img" },
+        { imgsrc: imgExample4, alt: "img" },
+        { imgsrc: imgExample5, alt: "img" },
+        { imgsrc: imgExample6, alt: "img" },
+        { imgsrc: imgExample7, alt: "img" },
+        { imgsrc: imgExample8, alt: "img" },
+        { imgsrc: imgExample9, alt: "img" },
     ]
 
     return (

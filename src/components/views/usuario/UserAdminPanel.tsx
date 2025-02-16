@@ -102,7 +102,7 @@ const UserAdminPanel: React.FC<{ userData: UserData }> = ({ userData }) => {
 
                         <motion.div className="admin-panel-grid" variants={containerVariants}>
                             <motion.div className="admin-panel-section" variants={itemVariants}>
-                                <A href="/usuario/actualizar-informacion">
+                                <A href="/usuario/datos/personales">
                                     <h2 className="admin-panel-section-title">
                                         <span>Información del Usuario</span>
                                         <Icon icon={<FaEdit />} />

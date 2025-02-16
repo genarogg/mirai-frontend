@@ -1,9 +1,10 @@
-"use client"
-import React, { useEffect, useState } from 'react'
-import { useQuery } from '@apollo/client';
-import { GET_USER_QUERY } from '@query';
+"use client";
+import React, { useEffect, useState } from "react";
+import UserAdminPanel from "@components/views/usuario/UserAdminPanel";
 
-import UserAdminPanel from "@components/views/usuario/UserAdminPanel"
+import Spinner from "@/components/layout/public/spinner/Spinner";
+
+import { URL_BACKEND } from "@env";
 
 const dataInitial = {
   id: 0,
@@ -62,30 +63,121 @@ const dataInitial = {
       edad: 29,
     },
   ],
-}
+};
 
 export default function Home() {
   const [data2, setData] = useState(dataInitial);
-
-  const token = localStorage.getItem('token');
-
-  const { data, loading, error } = useQuery(GET_USER_QUERY, {
-    variables: { token },
-  });
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
 
   useEffect(() => {
-    if (data) {
-      setData(data.getUser.data);
-    }
-  }, [data]);
+    const fetchData = async () => {
+      try {
+        // Obtener el token desde localStorage dentro del useEffect
+        const token = localStorage.getItem("token");
+        if (!token) {
+          throw new Error("Token no encontrado");
+        }
 
-  if (loading) return <p>Loading...</p>;
-  if (error) return <p>Error: {error.message}</p>;
+        // Realizar la petición a la API GraphQL (ajusta la URL según corresponda)
+        const response = await fetch(URL_BACKEND + "/graphql", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+            // Se incluye el token en el header si es necesario
+            "Authorization": `Bearer ${token}`,
+          },
+          body: JSON.stringify({
+            query: `
+              query GetUser($token: String!) {
+                getUser(token: $token) {
+                  data {
+                    id
+                    name
+                    lastName
+                    email
+                    subscription
+                    createdAt
+                    updatedAt
+                    role
+                    isActive
+                    isVerified
+                    profileImage
+                    imgForChange
+                    notificationsEnabled
+                    lastLogin
+                    totalOrders
+                    preferredLanguage
+                    preferredCurrency
+                    referralCode
+                    referrerId
+                    AnalisisFacial {
+                      id
+                      colorDePiel
+                      colorDePelo
+                      colorDeOjos
+                      tonoDePiel
+                      subtonoDePiel
+                      estacionDelAno
+                      tipoDeRostro
+                      sistemaFitzpatrick
+                      PantoneSkintone
+                      NARSSkinToneSystem
+                      LOrealColorCode
+                      ColorMeBeautiful
+                      MunsellColorSystem
+                    }
+                    userProfile {
+                      id
+                      phoneNumber
+                      address
+                      city
+                      state
+                      postalCode
+                      country
+                      dateOfBirth
+                      etnia
+                      idiomas
+                      sexo
+                      altura
+                      peso
+                      tallaDeRopa
+                      edad
+                    }
+                  }
+                }
+              }
+            `,
+            variables: { token },
+          }),
+        });
+
+        if (!response.ok) {
+          throw new Error(`Error en la petición: ${response.status}`);
+        }
+
+        const json = await response.json();
+        if (json.errors) {
+          throw new Error(json.errors[0].message);
+        }
+
+        setData(json.data.getUser.data);
+      } catch (err) {
+        console.log(err);
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    fetchData();
+  }, []);
+
+  if (loading) return <Spinner />;
+
 
   return (
     <main>
       <UserAdminPanel userData={data2} />
     </main>
-  )
+  );
 }
-

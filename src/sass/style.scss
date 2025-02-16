@@ -3,4 +3,8 @@
 @use "./nanify/nanify";
 @use "./resetStyles/layout";
 @use "./resetStyles/imgCard";
-@use "./demo"
+@use "./demo";
+
+.usuario{
+    background: linear-gradient(90deg, #ffffff, #fce4ec, #e3f2fd);
+}

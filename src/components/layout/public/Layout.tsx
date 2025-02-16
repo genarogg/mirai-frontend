@@ -3,6 +3,7 @@ import Header from "./header/Header"
 import Footer from './footer/Footer'
 import "./sass/_layout.scss"
 
+
 interface LayoutProps {
     children: React.ReactNode;
     where?: string;

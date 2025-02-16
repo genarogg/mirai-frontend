@@ -1,5 +1,5 @@
 'use client'
-import React,{useState} from 'react'
+import React, { useState } from 'react'
 import SliderBackground from '@components/swiper/sliderBackground/SliderBackgroud';
 
 import img1 from "@public/mainSliderHome/slider1.jpg";
@@ -87,7 +87,15 @@ const sliderHome: React.FC<sliderHomeProps> = () => {
     )
 
 
-    return (<>  <SliderBackground data={dataSliderBackground} effect="morph-x" id="principalSlider" /></>);
+    return (
+        <>
+            <SliderBackground
+                data={dataSliderBackground}
+                effect="morph-x"
+                id="principalSlider"
+            />
+        </>
+    );
 }
 
 export default sliderHome;
