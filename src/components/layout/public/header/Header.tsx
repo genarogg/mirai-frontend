@@ -991,7 +991,7 @@ const Header: React.FC<HeaderProps> = () => {
                     navLogin={navLogin}
                     login={login}
                 />
-                <HeaderDown data={categoryData} />
+                <HeaderDown  />
             </>
         );
     }

@@ -8,7 +8,7 @@ interface SqueletoProps {
     baseColor?: string;
     highlightColor?: string;
     duration?: number;
-
+    style?: any;
 }
 
 const Squeleto: React.FC<SqueletoProps> = ({
@@ -16,7 +16,8 @@ const Squeleto: React.FC<SqueletoProps> = ({
     height,
     baseColor = "#f0f0f0",
     highlightColor = "#e0e0e0",
-    duration = 1.5
+    duration = 1.5,
+    style
 }) => {
     return (
         <Skeleton
@@ -25,6 +26,7 @@ const Squeleto: React.FC<SqueletoProps> = ({
             baseColor={baseColor}
             highlightColor={highlightColor}
             duration={duration}
+            style={style}
         />
     );
 }

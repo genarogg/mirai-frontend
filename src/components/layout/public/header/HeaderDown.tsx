@@ -1,95 +1,55 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { Img, Icon, A } from "@nano";
 import { FaRegHeart } from "react-icons/fa";
-import { regexUrl } from "@fn/index"
+import { regexUrl } from "@fn/index";
 import HeaderToolTip from '@components/layout/tooltip/HeaderToolTip';
+import { URL_STRIPI, URL_STRIPI_GQL } from "@env";
 
-interface HeaderDownProps {
-    data: any;
-}
+interface HeaderDownProps {}
 
-const HeaderDown: React.FC<HeaderDownProps> = ({ data }) => {
+const HeaderDown: React.FC<HeaderDownProps> = () => {
+    const [categorias, setCategorias] = useState([]);
 
+    useEffect(() => {
+        const fetchCategorias = async () => {
+            try {
+                const response = await fetch(URL_STRIPI_GQL, {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify({
+                        query: `
+                            query {
+                                categorias {
+                                    nombre
+                                   
+                                }
+                            }
+                        `,
+                    }),
+                });
 
-    const SubCategoria = ({ name, items, itemType }: any) => (
-        <div className="subCategoria">
-            <h5 className='slideIn'>{name}</h5>
-            <nav>
-                <ul>
-                    <li className='slideIn'>
-                        <A href={`/categoria/${regexUrl(name)}`} >
-                            <div className="viewmore">
-                                <Icon icon={<FaRegHeart />} />
-                            </div>
-                            <h6>Ver más!</h6>
-                        </A>
-                    </li>
-                    {items.map((item: any, index: any) => (
-                        <li className='slideIn' key={index}>
-                            <A href={`/categoria/${regexUrl(item.label)}`}>
-                                <Img
-                                    type={itemType}
-                                    src={item.imgSrc}
-                                    width={80}
-                                    height={80}
-                                    alt={item.imgAlt}
-                                    className='imgCategoria'
-                                    visible={false}
-                                />
-                                <h6>{item.label}</h6>
-                            </A>
-                        </li>
-                    ))}
-                </ul>
-            </nav>
-        </div >
-    );
+                const result = await response.json();
+                setCategorias(result.data.categorias);
+            } catch (error) {
+                console.error('Error fetching categorias:', error);
+            }
+        };
 
-    const ContainerLeft = ({ containerLeft }: any) => (
-        <div className="containerLeft">
-            <Img
-                type={containerLeft.type}
-                src={containerLeft.src}
-                blurDataURL={containerLeft.blurDataURL}
-                alt={containerLeft.alt}
-                width={400}
-                height={400}
-                visible={false}
-
-            />
-        </div>
-    );
-
-    const NavToolTip = ({ title, containerLeft, subcategories }: any) => (
-        <li>
-            <HeaderToolTip title={title}>
-                <div className="containerCategoria">
-                    <ContainerLeft containerLeft={containerLeft} />
-                    <div className="categorias">
-                        {subcategories.map((sub: any, index: any) => (
-                            <SubCategoria
-                                key={index}
-                                name={sub.name}
-                                itemType={sub.itemType}
-                                items={sub.items} />
-                        ))}
-                    </div>
-                </div>
-            </HeaderToolTip>
-        </li>
-    );
+        fetchCategorias();
+    }, []);
 
     return (
         <div className="headerDown">
             <nav className='navToolTip'>
                 <ul>
-                    {data.map((category: any, index: any) => (
-                        <NavToolTip
-                            key={index}
-                            title={category.title}
-                            containerLeft={category.containerLeft}
-                            subcategories={category.subcategories}
-                        />
+                    {categorias.map((categoria: any) => (
+                        <li key={categoria.nombre}>
+                            <A href={`/categoria/${regexUrl(categoria.nombre)}`}>
+                                {categoria.nombre.toUpperCase()}
+                            </A>
+                        </li>
                     ))}
                 </ul>
             </nav>
