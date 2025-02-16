@@ -1,19 +1,95 @@
-'use client'
-import React from 'react'
-import SingleProduct from '@components/views/singleProduct/SingleProduct'
-interface singleProductProps {
+// app/product/[slug]/page.tsx
+import React from 'react';
+import SingleProduct from '@components/views/singleProduct/SingleProduct';
 
+import { URL_STRIPI_GQL } from "@env"
+
+const PRODUCT_QUERY = `
+ query ($slug: String!) {
+    products(filters: { slug: { eq: $slug } }) {
+    titulo
+      base_price
+    discount_percentage
+    description
+    img_main {
+      url
+      name
+    }
+    img_secundary {
+      url
+      name
+    }
+    imgs {
+      url
+    }
+    slug
+    tallas {
+      color
+      talla
+    }
+    especificaciones {
+      fit
+      forro
+      grosor
+      Materiales
+      transparency
+    }
+    categorias {
+      nombre
+    }
+    etiquetas {
+      etiqueta
+    }
+    }
+  }
+`;
+
+interface PageProps {
+  params: { slug: string };
 }
 
-const product = {
-    id: 1,
-    // id: params.id,
+export default async function ProductPage({ params }: PageProps) {
+
+  // const query = JSON.stringify({
+  //   query: PRODUCT_QUERY,
+  //   variables: { slug: params.slug },
+  // })
+
+
+  // // Realizamos la consulta a Strapi (asegúrate de tener la URL en una variable de entorno)
+  // const res = await fetch(URL_STRIPI_GQL, {
+  //   method: 'POST',
+  //   headers: {
+  //     'Content-Type': 'application/json',
+  //   },
+  //   body: query
+
+  // })
+
+  // if (!res.ok) {
+  //   console.log(res)
+  //   throw new Error('Error al obtener los datos del producto');
+
+  // }
+
+  // const { data } = await res.json();
+
+  // const product = data.products[0];
+
+  // const ultimateData = {
+  //   product,
+
+  // }
+
+
+  const ultimateData = {
+    id: 2,
     name: "Camiseta de Algodón Premium",
     price: 29.99,
     originalPrice: 39.99,
     description: "Camiseta de algodón 100% orgánico, perfecta para el uso diario. Suave al tacto y duradera.",
     images: [
-      "/placeholder.svg?height=600&width=400",
+      "https://thumbs.dreamstime.com/b/hermosa-modelo-de-fitness-posando-con-ropa-deportiva-la-mujer-atl%C3%A9tica-muestra-el-pulgar-arriba-satisfecho-los-resultados-del-161012255.jpg",
       "/placeholder.svg?height=600&width=400",
       "/placeholder.svg?height=600&width=400",
       "/placeholder.svg?height=600&width=400",
@@ -98,8 +174,14 @@ const product = {
     ],
   }
 
-const singleProduct: React.FC<singleProductProps> = () => {
-    return (<SingleProduct product={product}/>);
-}
 
-export default singleProduct;
+  if (!ultimateData) {
+    // Opcional: Puedes renderizar una página 404 personalizada
+    return <p>Producto no encontrado</p>;
+  }
+
+  // Nota: Es posible que debas adaptar la estructura del objeto "product" 
+  // para que coincida con lo que espera tu componente SingleProduct.
+  return <SingleProduct product={ultimateData} />;
+
+}

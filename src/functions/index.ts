@@ -17,6 +17,7 @@ import {
 import { random, sortNumbers, generateUUID } from "./mathUtils";
 import { quitarAcentos, regexUrl, isValidEmail } from "./regexUtils";
 import { cleanArray, log } from "./utils";
+import { getPredictionStatus, runPrediction } from "./fashn";
 
 export {
     $,
@@ -36,5 +37,6 @@ export {
     sortNumbers,
     generateUUID,
     quitarAcentos, regexUrl, isValidEmail,
-    cleanArray, log
+    cleanArray, log,
+    getPredictionStatus, runPrediction
 };
