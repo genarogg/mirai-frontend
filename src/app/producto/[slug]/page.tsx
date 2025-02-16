@@ -79,8 +79,6 @@ export default async function ProductPage({ params }: PageProps) {
 
   const product = data.products[0];
 
-  console.log("product", product)
-
   const imgs: any = [
     URL_STRIPI + product.img_main.url,
     URL_STRIPI + product.img_secundary.url,
@@ -100,6 +98,7 @@ export default async function ProductPage({ params }: PageProps) {
   const ultimateDataStatica = {
     id: "1",
     name: product.titulo,
+    slug: product.slug,
     price: product.base_price,
     originalPrice: product.base_price + (product.base_price * product.discount_percentage / 100),
     description: product.description[0].children[0].text,

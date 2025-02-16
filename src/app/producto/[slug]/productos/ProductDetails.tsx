@@ -14,6 +14,7 @@ import { useFileUpload } from "./use-file-upload"
 import ProductReviews from "./ProductReviews"
 import VirtualTryOnModal from "./VirtualTryOnModal"
 import AIGarmentModal from "./AIGarmentModal"
+import ComoMeQuedaria from "../comoMeQuedaria"
 
 import SingleProductCard from '@components/views/singleProduct/singleProductCard/SingleProductCard'
 
@@ -21,6 +22,7 @@ interface Product {
   id: string
   name: string
   price: number
+  slug: string
   originalPrice: number
   prenda: string
   description: string
@@ -227,33 +229,13 @@ export default function ProductDetails({ product }: { product: Product }) {
             </CardContent>
           </Card>
 
-          <div className="flex gap-4">
-            <Button
-              variant="outline"
-              className="flex-1"
-              onClick={() => setShowFitRecommendation(!showFitRecommendation)}
-            >
-              ¿Cómo me quedaría?
-            </Button>
-            <Button variant="outline" className="flex-1" onClick={handleTryOnGarment}>
-              <Shirt className="mr-2 h-4 w-4" />
-              Probarme la prenda
-            </Button>
-          </div>
-
-          {showFitRecommendation && (
-            <Card>
-              <CardContent className="p-4">
-                <p className="text-sm text-gray-600">
-                  Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et
-                  dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
-                  aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum
-                  dolore eu fugiat nulla pariatur.
-                </p>
-              </CardContent>
-            </Card>
-          )}
-
+          {/*  */}
+          <ComoMeQuedaria
+            showFitRecommendation={showFitRecommendation}
+            setShowFitRecommendation={setShowFitRecommendation}
+            handleTryOnGarment={handleTryOnGarment}
+            slug={product.slug}
+          />
           <Button className="w-full" onClick={addToCart}>
             <ShoppingCart className="mr-2 h-4 w-4" /> Agregar al carrito
           </Button>
@@ -329,7 +311,7 @@ export default function ProductDetails({ product }: { product: Product }) {
         productName={product.name}
         productImage={base64Image}
       />
-      <div className="mt-8 border-t pt-8">
+      {/* <div className="mt-8 border-t pt-8">
         <h3 className="text-lg font-semibold mb-4">Sube tu foto para probar la prenda</h3>
         <div
           className="border-2 border-dashed rounded-lg p-8 text-center mb-4 relative"
@@ -370,7 +352,7 @@ export default function ProductDetails({ product }: { product: Product }) {
             </div>
           )}
         </div>
-      </div>
+      </div> */}
       <AIGarmentModal
         isOpen={isAIGarmentModalOpen}
         onClose={() => setIsAIGarmentModalOpen(false)}
