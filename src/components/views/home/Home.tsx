@@ -20,16 +20,9 @@ import img4 from "@public/mainSliderHome/slider4.jpg";
 import img5 from "@public/mainSliderHome/slider5.jpg";
 import img6 from "@public/mainSliderHome/slider6.jpg";
 
-import imgCategoria1 from "@public/categoriaSlider/collection-circle-1.jpg";
-import imgCategoria2 from "@public/categoriaSlider/collection-circle-2.jpg";
-import imgCategoria3 from "@public/categoriaSlider/collection-circle-3.jpg";
-import imgCategoria4 from "@public/categoriaSlider/collection-circle-4.jpg";
-import imgCategoria5 from "@public/categoriaSlider/collection-circle-5.jpg";
+
 import imgCategoria6 from "@public/categoriaSlider/collection-circle-6.jpg";
-import imgCategoria7 from "@public/categoriaSlider/collection-circle-7.jpg";
 
-
-import imgDemo from "@public/swiper/05.jpg";
 
 import imgMentor1 from "@public/homeMentor/mentor1.jpg";
 import imgMentor2 from "@public/homeMentor/mentor2.jpg";
@@ -45,76 +38,79 @@ interface homeProps {
 
 const home: React.FC<homeProps> = () => {
 
-    const dataSliderBackground = [
-        {
-            img: img1.src,
-            info: {
-                title: "Descubre tu estilo",
-                description: "Encuentra prendas únicas con un solo clic.",
-                btn: {
-                    text: "Shop collection",
-                    link: "#"
+    const [dataSliderBackground, setDataSliderBackground] = useState(
+        [
+            {
+                img: img1.src,
+                info: {
+                    title: "Descubre tu estilo",
+                    description: "Encuentra prendas únicas con un solo clic.",
+                    btn: {
+                        text: "Shop collection",
+                        link: "#"
+                    }
+                }
+            },
+            {
+                img: img2.src,
+                info: {
+                    title: "Renueva tu guardarropa",
+                    description: "Ofertas exclusivas y envíos express te esperan.",
+                    btn: {
+                        text: "Shop collection",
+                        link: "#"
+                    }
+                }
+            },
+            {
+                img: img3.src,
+                info: {
+                    title: "Transforma tu look hoy!",
+                    description: "Devoluciones fáciles y talleres para cada ocasión.",
+                    btn: {
+                        text: "Shop collection",
+                        link: "#"
+                    }
+                }
+            },
+            {
+                img: img4.src,
+                info: {
+                    title: "Descubre tu estilo",
+                    description: "Encuentra prendas únicas con un solo clic.",
+                    btn: {
+                        text: "Shop collection",
+                        link: "#"
+                    }
+                }
+            },
+            {
+                img: img5.src,
+                info: {
+                    title: "Renueva tu guardarropa",
+                    description: "Ofertas exclusivas y envíos express te esperan.",
+                    btn: {
+                        text: "Shop collection",
+                        link: "#"
+                    }
+                }
+            },
+            {
+                img: img6.src,
+                info: {
+                    title: "Transforma tu look hoy!",
+                    description: "Devoluciones fáciles y talleres para cada ocasión.",
+                    btn: {
+                        text: "Shop collection",
+                        link: "#"
+                    }
                 }
             }
-        },
-        {
-            img: img2.src,
-            info: {
-                title: "Renueva tu guardarropa",
-                description: "Ofertas exclusivas y envíos express te esperan.",
-                btn: {
-                    text: "Shop collection",
-                    link: "#"
-                }
-            }
-        },
-        {
-            img: img3.src,
-            info: {
-                title: "Transforma tu look hoy!",
-                description: "Devoluciones fáciles y talleres para cada ocasión.",
-                btn: {
-                    text: "Shop collection",
-                    link: "#"
-                }
-            }
-        },
-        {
-            img: img4.src,
-            info: {
-                title: "Descubre tu estilo",
-                description: "Encuentra prendas únicas con un solo clic.",
-                btn: {
-                    text: "Shop collection",
-                    link: "#"
-                }
-            }
-        },
-        {
-            img: img5.src,
-            info: {
-                title: "Renueva tu guardarropa",
-                description: "Ofertas exclusivas y envíos express te esperan.",
-                btn: {
-                    text: "Shop collection",
-                    link: "#"
-                }
-            }
-        },
-        {
-            img: img6.src,
-            info: {
-                title: "Transforma tu look hoy!",
-                description: "Devoluciones fáciles y talleres para cada ocasión.",
-                btn: {
-                    text: "Shop collection",
-                    link: "#"
-                }
-            }
-        }
-    ];
-
+        ]
+    )
     const [categorias, setCategorias] = useState([]);
+
+
 
     useEffect(() => {
         const fetchCategorias = async () => {

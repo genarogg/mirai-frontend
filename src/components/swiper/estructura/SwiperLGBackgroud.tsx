@@ -48,12 +48,12 @@ const SwiperLGBackgroud: React.FC<SwiperLGProps> = ({ children, id, effect = "ra
                 effect="gl"
                 onBeforeInit={(swiper: any) => {
                     swiper.params.gl.shader = effect
-                    swiper.params.gl.id = "hola"
+                    swiper.params.gl.id = "holadas"
                 }}
              
                 direction={'horizontal'}
                 speed={3000}
-                autoplay={autoplay}
+                // autoplay={autoplay}
                 loop={true}
                 spaceBetween={0}
                 touchReleaseOnEdges={true}

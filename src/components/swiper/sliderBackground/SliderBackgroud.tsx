@@ -4,6 +4,8 @@ import "./sass/_sliderBackgroud.scss";
 import { SwiperSlide } from 'swiper/react';
 import { A, Icon } from "@nano";
 
+import Image from 'next/image';
+
 import { IoIosArrowForward } from "react-icons/io";
 
 import SwiperLGBackgroud from '@components/swiper/estructura/SwiperLGBackgroud';
@@ -19,10 +21,16 @@ const SliderBackground: React.FC<SliderBackgroundProps> = ({ data, effect, id })
             <SwiperLGBackgroud effect={effect} id={id} >
                 {data.map((element: any, index: any) => (
                     <SwiperSlide key={index}>
-                        <img src={element.img}
+
+
+                        <Image
+                            src={element.img}
                             alt="img"
+                            width={1920}
+                            height={1080}
                             className="swiper-gl-image"
                         />
+
                         {element.info && (
                             <div className="containerInfo" key={index}>
                                 <div className="content">

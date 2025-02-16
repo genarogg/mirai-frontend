@@ -5,7 +5,6 @@ import { regexUrl } from '@fn/regexUtils';
 import "./sass/_dinamicCardContainer.scss";
 import { URL_STRIPI_GQL, URL_STRIPI } from '@env';
 
-
 interface DinamicProps {
 
 }
@@ -51,7 +50,7 @@ const Dinamic: React.FC<DinamicProps> = () => {
                 });
 
                 const result = await response.json();
-                console.log(result);
+
                 const formattedData = result.data.products.map((product: any) => ({
                     titulo: product.titulo,
                     url: "/producto/" + regexUrl(product.titulo),
@@ -73,7 +72,7 @@ const Dinamic: React.FC<DinamicProps> = () => {
     }, []);
 
     function extraerCodigoColor(item: any) {
-        if (!item.color.includes("_")) return null; 
+        if (!item.color.includes("_")) return null;
         const partes = item.color.split("_");
         return `#${partes[1]}`;
     }
@@ -90,6 +89,10 @@ const Dinamic: React.FC<DinamicProps> = () => {
                 {data.slice(8, 12).map((item, index) => (
                     <CardProductoAlana key={index} data={item} id="t3" />
                 ))}
+
+                {/* {data.map((item, index) => (
+                    <CardProductoAlana key={index} data={item} id="t2" />
+                ))} */}
             </div>
         </div>
     );
