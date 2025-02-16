@@ -17,7 +17,8 @@ const config = {
       "esprit.vteximg.com.br",
       "w0.peakpx.com",
       "localhost",
-      "localhost:1337"
+      "localhost:1337",
+      "thumbs.dreamstime.com",
     ],
   },
 };

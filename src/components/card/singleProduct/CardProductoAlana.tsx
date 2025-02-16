@@ -87,9 +87,7 @@ const CardProductoAlana: React.FC<CardProductoAlanaProps> = ({ data, id }) => {
                         <span
                             key={colorIndex}
                             className="color-product"
-
                         >
-
                             <span style={{ backgroundColor: color }}></span>
                         </span>
                     ))}

@@ -17,20 +17,9 @@ interface SliderProps {
 }
 
 const Slider: React.FunctionComponent<SliderProps> = ({ producto }) => {
-    const data = [
-        {
-            imgs: [
-                "https://esprit.vteximg.com.br/arquivos/ids/1370194/34_432F001_GRI180403_0.jpg",
-                "https://esprit.vteximg.com.br/arquivos/ids/1370625/34_432F014_VER190516_0.jpg",
-                "https://esprit.vteximg.com.br/arquivos/ids/1503498/34_699F007_NEG190303_3.jpg?v=638602878209600000",
-                "https://esprit.vteximg.com.br/arquivos/ids/1518749/34_601F105_BLA114001_0.jpg?v=638665023420970000",
-                "https://esprit.vteximg.com.br/arquivos/ids/1370194/34_432F001_GRI180403_0.jpg",
-                "https://esprit.vteximg.com.br/arquivos/ids/1370625/34_432F014_VER190516_0.jpg",
-                "https://esprit.vteximg.com.br/arquivos/ids/1503498/34_699F007_NEG190303_3.jpg?v=638602878209600000",
-                "https://esprit.vteximg.com.br/arquivos/ids/1518749/34_601F105_BLA114001_0.jpg?v=638665023420970000",
-            ],
-        },
-    ];
+
+
+    const imgs = producto.images;
 
     const [thumbsSwiper, setThumbsSwiper] = useState<any>(null);
 
@@ -50,7 +39,7 @@ const Slider: React.FunctionComponent<SliderProps> = ({ producto }) => {
                 watchSlidesProgress={true}
                 modules={[Navigation, Thumbs]}
             >
-                {data[0].imgs.map((img, index) => (
+                {imgs.map((img: any, index: any) => (
                     <SwiperSlide key={index}>
                         <Image
                             src={img}
@@ -90,7 +79,7 @@ const Slider: React.FunctionComponent<SliderProps> = ({ producto }) => {
                 modules={[Mousewheel, EffectFade, Pagination, SwiperGL, Autoplay, Thumbs]}
                 className="mySwiper lg-producto-single"
             >
-                {data[0].imgs.map((img, index) => (
+                {imgs.map((img: any, index: any) => (
                     <SwiperSlide key={index}>
                         <Image src={img} alt={`Slide ${index}`} width={360} height={480} className="swiper-gl-image" />
                     </SwiperSlide>

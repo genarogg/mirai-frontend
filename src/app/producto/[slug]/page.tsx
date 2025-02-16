@@ -1,8 +1,10 @@
 // app/product/[slug]/page.tsx
 import React from 'react';
-import SingleProduct from '@components/views/singleProduct/SingleProduct';
-
-import { URL_STRIPI_GQL } from "@env"
+import SingleProduct from '@components/views/singleProduct/SingleProduct'
+import ProductDetails from './productos/ProductDetails';
+import Layout from '@components/layout/public/Layout'
+import HeaderGhost from '@components/layout/public/header/HeaderGhost'
+import { URL_STRIPI_GQL, URL_STRIPI } from "@env"
 
 const PRODUCT_QUERY = `
  query ($slug: String!) {
@@ -11,13 +13,14 @@ const PRODUCT_QUERY = `
       base_price
     discount_percentage
     description
+    codigo
+    prenda
     img_main {
       url
-      name
+      
     }
     img_secundary {
       url
-      name
     }
     imgs {
       url
@@ -50,52 +53,60 @@ interface PageProps {
 
 export default async function ProductPage({ params }: PageProps) {
 
-  // const query = JSON.stringify({
-  //   query: PRODUCT_QUERY,
-  //   variables: { slug: params.slug },
-  // })
+  const query = JSON.stringify({
+    query: PRODUCT_QUERY,
+    variables: { slug: params.slug },
+  })
 
 
-  // // Realizamos la consulta a Strapi (asegúrate de tener la URL en una variable de entorno)
-  // const res = await fetch(URL_STRIPI_GQL, {
-  //   method: 'POST',
-  //   headers: {
-  //     'Content-Type': 'application/json',
-  //   },
-  //   body: query
+  // Realizamos la consulta a Strapi (asegúrate de tener la URL en una variable de entorno)
+  const res = await fetch(URL_STRIPI_GQL, {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+    body: query
 
-  // })
+  })
 
-  // if (!res.ok) {
-  //   console.log(res)
-  //   throw new Error('Error al obtener los datos del producto');
+  if (!res.ok) {
+    console.log(res)
+    throw new Error('Error al obtener los datos del producto');
 
-  // }
+  }
 
-  // const { data } = await res.json();
+  const { data } = await res.json();
 
-  // const product = data.products[0];
+  const product = data.products[0];
 
-  // const ultimateData = {
-  //   product,
+  console.log("product", product)
 
-  // }
+  const imgs: any = [
+    URL_STRIPI + product.img_main.url,
+    URL_STRIPI + product.img_secundary.url,
+    ...product.imgs.map((img: any) => URL_STRIPI +  img.url)
+  ];
 
+  function transformTallas(tallas: { color: string, talla: string }[]) {
+    const sizes = tallas.map(t => t.talla);
+    const colors = tallas.map(t => t.color.split('_')[0]);
+    return { sizes, colors };
+  }
 
-  const ultimateData = {
-    id: 2,
-    name: "Camiseta de Algodón Premium",
-    price: 29.99,
-    originalPrice: 39.99,
-    description: "Camiseta de algodón 100% orgánico, perfecta para el uso diario. Suave al tacto y duradera.",
-    images: [
-      "https://thumbs.dreamstime.com/b/hermosa-modelo-de-fitness-posando-con-ropa-deportiva-la-mujer-atl%C3%A9tica-muestra-el-pulgar-arriba-satisfecho-los-resultados-del-161012255.jpg",
-      "/placeholder.svg?height=600&width=400",
-      "/placeholder.svg?height=600&width=400",
-      "/placeholder.svg?height=600&width=400",
-    ],
-    sizes: ["XS", "S", "M", "L", "XL"],
-    colors: ["Blanco", "Negro", "Azul", "Rojo"],
+  const { sizes, colors } = transformTallas(product.tallas);
+
+  console.log()
+
+  const ultimateDataStatica = {
+    id: "1",
+    name: product.titulo,
+    price: product.base_price,
+    originalPrice: product.base_price + (product.base_price * product.discount_percentage / 100),
+    description: product.description[0].children[0].text,
+    images: imgs,
+    sizes,
+    colors,
+    prenda: product.prenda,
     details: {
       material: "100% Algodón orgánico",
       fit: "Regular",
@@ -118,9 +129,9 @@ export default async function ProductPage({ params }: PageProps) {
       L: { busto: "96 cm", largo: "67 cm", hombro: "39 cm" },
       XL: { busto: "100 cm", largo: "68 cm", hombro: "40 cm" },
     },
-    sku: "TS-001-PR",
-    category: "Camisetas",
-    tags: ["básico", "casual", "verano"],
+    sku: `${product.codigo} - ${product.prenda}`,
+    category: product.categorias.map((c: any) => c.nombre),
+    tags: product.etiquetas.map((e: any) => e.etiqueta),
     reviews: [
       {
         id: 1,
@@ -175,13 +186,17 @@ export default async function ProductPage({ params }: PageProps) {
   }
 
 
-  if (!ultimateData) {
+  if (!ultimateDataStatica) {
     // Opcional: Puedes renderizar una página 404 personalizada
     return <p>Producto no encontrado</p>;
   }
 
-  // Nota: Es posible que debas adaptar la estructura del objeto "product" 
-  // para que coincida con lo que espera tu componente SingleProduct.
-  return <SingleProduct product={ultimateData} />;
 
+
+  return (
+    <Layout>
+      <HeaderGhost />
+      <ProductDetails product={ultimateDataStatica} />
+    </Layout>
+  )
 }

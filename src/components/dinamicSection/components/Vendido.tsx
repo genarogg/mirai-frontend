@@ -30,6 +30,7 @@ const Vendido: React.FC<VendidoProps> = () => {
                                 ) {
                                     titulo
                                     base_price
+                                    slug
                                     tallas {
                                         talla
                                         color
@@ -53,7 +54,7 @@ const Vendido: React.FC<VendidoProps> = () => {
 
                 const formattedData = result.data.products.map((product: any) => ({
                     titulo: product.titulo,
-                    url: "/producto/" + regexUrl(product.titulo),
+                    url: "/producto/" + product.slug,
                     imgs: [
                         URL_STRIPI + product.img_main.url,
                         URL_STRIPI + product.img_secundary.url

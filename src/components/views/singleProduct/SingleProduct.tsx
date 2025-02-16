@@ -1,11 +1,11 @@
 'use client'
 import React from 'react'
 import Layout from '@components/layout/public/Layout'
+import HeaderGhost from '@components/layout/public/header/HeaderGhost'
 
 import "./sass/_singleProduct.scss"
 
 import SingleProductCard from '@components/views/singleProduct/singleProductCard/SingleProductCard'
-import HeaderGhost from '@components/layout/public/header/HeaderGhost'
 
 import DescriptionProduct from './descriptionProduct/DescriptionProduct'
 
@@ -24,9 +24,8 @@ const SingleProduct: React.FC<SingleProductProps> = ({ product }) => {
             <HeaderGhost />
             <div className="container-product-data">
                 <div className="internar-container">
-                    <SingleProductCard />
+                    <SingleProductCard product={product}/>
                     <DescriptionProduct product={product} />
-
                 </div>
             </div>
             <div className="container-product-data productReviewsAndComments">

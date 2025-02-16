@@ -34,6 +34,7 @@ const Oferta: React.FC<OfertaProps> = () => {
                                 ) {
                                     titulo
                                     base_price
+                                    slug
                                     tallas {
                                         talla
                                         color
