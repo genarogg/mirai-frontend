@@ -6,15 +6,16 @@ import { Button } from "@/components/ui/button"
 import { Card, CardContent } from "@/components/ui/card"
 import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group"
 import { Label } from "@/components/ui/label"
-import { ShoppingCart, Shirt, Upload } from "lucide-react"
+import { ShoppingCart } from "lucide-react"
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@/components/ui/table"
 import { Badge } from "@/components/ui/badge"
-import { useFileUpload } from "./use-file-upload"
 import ProductReviews from "./ProductReviews"
 import VirtualTryOnModal from "./VirtualTryOnModal"
 import AIGarmentModal from "./AIGarmentModal"
 import ComoMeQuedaria from "../comoMeQuedaria"
+
+import { URL_BACKEND } from "@env"
 
 import SingleProductCard from '@components/views/singleProduct/singleProductCard/SingleProductCard'
 
@@ -26,7 +27,7 @@ interface Product {
   originalPrice: number
   prenda: string
   description: string
-  images: any
+  images: string[]
   sizes: string[]
   colors: string[]
   details: {
@@ -73,29 +74,95 @@ interface Comment {
 export default function ProductDetails({ product }: { product: Product }) {
   const [selectedSize, setSelectedSize] = useState(product.sizes[0])
   const [selectedColor, setSelectedColor] = useState(product.colors[0])
-
   const [showFitRecommendation, setShowFitRecommendation] = useState(false)
   const [isVirtualTryOnOpen, setIsVirtualTryOnOpen] = useState(false)
   const [isAIGarmentModalOpen, setIsAIGarmentModalOpen] = useState(false)
   const [base64Image, setBase64Image] = useState<string | null>(null)
-  const userPhotoUpload = useFileUpload()
+
+  // Estados para la imagen del usuario proveniente del backend
+  const [userImg, setUserImg] = useState<string | null>(null)
+  const [userLoading, setUserLoading] = useState<boolean>(true)
+  const [userError, setUserError] = useState<any>(null)
+
+  // Convertir la imagen del producto a base64 (si es necesario)
+
+  const convertToBase64 = async (url: string) => {
+    console.log(url)
+    const response = await fetch(url)
+    const blob = await response.blob()
+    return new Promise<string>((resolve, reject) => {
+      const reader = new FileReader()
+      reader.onloadend = () => resolve(reader.result as string)
+      reader.onerror = reject
+      reader.readAsDataURL(blob)
+    })
+  }
+
+
+  
 
   useEffect(() => {
-    const convertToBase64 = async (url: string) => {
-      const response = await fetch(url)
-      const blob = await response.blob()
-      return new Promise<string>((resolve, reject) => {
-        const reader = new FileReader()
-        reader.onloadend = () => resolve(reader.result as string)
-        reader.onerror = reject
-        reader.readAsDataURL(blob)
-      })
-    }
+  
+
+    console.log(userImg)
 
     convertToBase64(product.images[0]).then(setBase64Image)
   }, [product.images])
 
-  // Función para obtener el color de fondo basado en el color seleccionado
+ 
+  const fetchUserImage = async () => {
+    try {
+      const token = localStorage.getItem('token')
+      if (!token) {
+        throw new Error('Token no encontrado')
+      }
+
+      const response = await fetch(`${URL_BACKEND}/graphql`, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          Authorization: `Bearer ${token}`,
+        },
+        body: JSON.stringify({
+          query: `
+            query GetUser($token: String!) {
+              getUser(token: $token) {
+                data {
+                  imgBase64
+                }
+              }
+            }
+          `,
+          variables: { token },
+        }),
+      })
+
+      if (!response.ok) {
+        throw new Error(`Error en la petición: ${response.status}`)
+      }
+
+      const json = await response.json()
+      if (json.errors) {
+        throw new Error(json.errors[0].message)
+      }
+
+      const userImg2 = json.data.getUser.data.imgBase64
+
+      console.log(userImg2)
+      setUserImg(userImg2)
+
+    } catch (err: any) {
+      console.error(err)
+      setUserError(err)
+    } finally {
+      setUserLoading(false)
+    }
+  }
+
+  useEffect(() => {
+    fetchUserImage()
+  }, [product.images])
+  // Función para obtener el color de fondo según el color seleccionado
   const getBackgroundColor = (color: string) => {
     const colorMap: { [key: string]: string } = {
       Negro: "bg-[#000000]",
@@ -149,7 +216,7 @@ export default function ProductDetails({ product }: { product: Product }) {
       Granate: "bg-[#800000]",
       Plateado: "bg-[#c0c0c0]",
     }
-    return colorMap[color] || "bg-gray-500" // Color por defecto si no se encuentra
+    return colorMap[color] || "bg-gray-500"
   }
 
   const addToCart = () => {
@@ -165,17 +232,20 @@ export default function ProductDetails({ product }: { product: Product }) {
     localStorage.setItem("cart", JSON.stringify(cart))
   }
 
-
-
   const handleTryOnGarment = () => {
-    if (!userPhotoUpload.file) {
-      console.error("Por favor, sube una foto tuya primero.")
+    console.log(userImg)
+
+    //convierte userImg a base 64
+
+
+
+
+    if (!userImg) {
+      console.error("La foto del usuario no está disponible.")
       return
     }
     setIsAIGarmentModalOpen(true)
   }
-
-  
 
   return (
     <div className="container mx-auto px-4 py-8">
@@ -189,10 +259,16 @@ export default function ProductDetails({ product }: { product: Product }) {
             <p className="text-sm text-gray-500">{product.sku}</p>
           </div>
           <div className="flex items-baseline space-x-2">
-            <p className="text-2xl font-semibold">${product.price.toFixed(2)}</p>
-            <p className="text-lg text-gray-500 line-through">${product.originalPrice.toFixed(2)}</p>
+            <p className="text-2xl font-semibold">
+              ${product.price.toFixed(2)}
+            </p>
+            <p className="text-lg text-gray-500 line-through">
+              ${product.originalPrice.toFixed(2)}
+            </p>
             {product.price < product.originalPrice && (
-              <Badge variant="secondary">{Math.round((1 - product.price / product.originalPrice) * 100)}% OFF</Badge>
+              <Badge variant="secondary">
+                {Math.round((1 - product.price / product.originalPrice) * 100)}% OFF
+              </Badge>
             )}
           </div>
           <p className="text-gray-600">{product.description}</p>
@@ -200,10 +276,18 @@ export default function ProductDetails({ product }: { product: Product }) {
             <CardContent className="p-4 space-y-4">
               <div>
                 <h3 className="font-semibold mb-2">Talla</h3>
-                <RadioGroup value={selectedSize} onValueChange={setSelectedSize} className="flex flex-wrap gap-2">
+                <RadioGroup
+                  value={selectedSize}
+                  onValueChange={setSelectedSize}
+                  className="flex flex-wrap gap-2"
+                >
                   {product.sizes.map((size) => (
                     <div key={size}>
-                      <RadioGroupItem value={size} id={`size-${size}`} className="peer sr-only" />
+                      <RadioGroupItem
+                        value={size}
+                        id={`size-${size}`}
+                        className="peer sr-only"
+                      />
                       <Label
                         htmlFor={`size-${size}`}
                         className="flex items-center justify-center rounded-md border-2 border-muted bg-popover px-3 py-2 hover:bg-accent hover:text-accent-foreground peer-data-[state=checked]:border-primary peer-data-[state=checked]:text-primary"
@@ -216,15 +300,27 @@ export default function ProductDetails({ product }: { product: Product }) {
               </div>
               <div>
                 <h3 className="font-semibold mb-2">Color</h3>
-                <RadioGroup value={selectedColor} onValueChange={setSelectedColor} className="flex flex-wrap gap-2">
+                <RadioGroup
+                  value={selectedColor}
+                  onValueChange={setSelectedColor}
+                  className="flex flex-wrap gap-2"
+                >
                   {product.colors.map((color) => (
                     <div key={color}>
-                      <RadioGroupItem value={color} id={`color-${color}`} className="peer sr-only" />
+                      <RadioGroupItem
+                        value={color}
+                        id={`color-${color}`}
+                        className="peer sr-only"
+                      />
                       <Label
                         htmlFor={`color-${color}`}
-                        className={`flex items-center justify-center rounded-md border-2 border-muted ${getBackgroundColor(color)} px-3 py-2 hover:opacity-80 peer-data-[state=checked]:border-primary peer-data-[state=checked]:ring-2 peer-data-[state=checked]:ring-primary`}
+                        className={`flex items-center justify-center rounded-md border-2 border-muted ${getBackgroundColor(
+                          color
+                        )} px-3 py-2 hover:opacity-80 peer-data-[state=checked]:border-primary peer-data-[state=checked]:ring-2 peer-data-[state=checked]:ring-primary`}
                       >
-                        <span className={color.toLowerCase() === "blanco" ? "text-black" : "text-white"}>{color}</span>
+                        <span className={color.toLowerCase() === "blanco" ? "text-black" : "text-white"}>
+                          {color}
+                        </span>
                       </Label>
                     </div>
                   ))}
@@ -233,7 +329,6 @@ export default function ProductDetails({ product }: { product: Product }) {
             </CardContent>
           </Card>
 
-          {/*  */}
           <ComoMeQuedaria
             showFitRecommendation={showFitRecommendation}
             setShowFitRecommendation={setShowFitRecommendation}
@@ -315,52 +410,14 @@ export default function ProductDetails({ product }: { product: Product }) {
         productName={product.name}
         productImage={base64Image}
       />
-      <div className="mt-8 border-t pt-8">
-        <h3 className="text-lg font-semibold mb-4">Sube tu foto para probar la prenda</h3>
-        <div
-          className="border-2 border-dashed rounded-lg p-8 text-center mb-4 relative"
-          onDragOver={(e) => e.preventDefault()}
-          onDrop={userPhotoUpload.handleDrop}
-        >
-          {userPhotoUpload.file ? (
-            <div className="relative">
-              <img src={userPhotoUpload.file || "/placeholder.svg"} alt="Tu foto" className="max-h-[200px] mx-auto" />
-              <Button
-                variant="destructive"
-                size="sm"
-                className="absolute top-2 right-2"
-                onClick={userPhotoUpload.clearFile}
-              >
-                Eliminar
-              </Button>
-            </div>
-          ) : (
-            <div className="flex flex-col items-center gap-2">
-              <Upload className="w-8 h-8 text-muted-foreground mb-2" />
-              <p className="text-sm text-muted-foreground">Arrastra y suelta tu foto aquí</p>
-              <span className="text-sm text-muted-foreground">O</span>
-              <Button
-                variant="outline"
-                className="mt-2"
-                onClick={() => document.getElementById("user-photo-upload")?.click()}
-              >
-                Seleccionar archivo
-              </Button>
-              <input
-                id="user-photo-upload"
-                type="file"
-                className="hidden"
-                accept="image/*"
-                onChange={userPhotoUpload.handleFileSelect}
-              />
-            </div>
-          )}
-        </div>
-      </div>
+      {/*
+        Se eliminó la sección de subida manual de foto ya que la imagen del usuario
+        se obtiene directamente del backend.
+      */}
       <AIGarmentModal
         isOpen={isAIGarmentModalOpen}
         onClose={() => setIsAIGarmentModalOpen(false)}
-        userImage={userPhotoUpload.file}
+        userImage={userImg}
         productImage={base64Image}
         productName={product.name}
         prenda={product.prenda}
