@@ -80,6 +80,16 @@ const BtnSubmitBasic: React.FC<BtnSubmitBasicProps> = ({
       if (endpoint === "login") {
         response = await loginUser({ variables: { input: data } })
         responseData = response.data.loginUser
+
+        if (localStorage.getItem("primeraVez") === "primeraVez") {
+
+          router.push("/usuario/datos/img-perfil");
+
+        } else {
+          router.push("/usuario");
+        }
+
+
       }
 
 
