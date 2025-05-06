@@ -12,7 +12,7 @@ interface APIResponse {
   output: any
 }
 
-const API_KEY = "fa-av9wAScgiEap-opL5jTEVslg1zH9QLOrUMwc3"
+const API_KEY = "fa-qqHG3RmAEcYE-rKppBIw9HvTP7EYj8ocvd2MG"
 const API_URL = "https://api.fashn.ai/v1"
 
 export async function runPrediction(options: PredictionOptions): Promise<APIResponse> {

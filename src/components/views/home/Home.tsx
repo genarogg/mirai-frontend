@@ -160,7 +160,7 @@ const Home: React.FC<HomeProps> = () => {
   return (
     <Layout>
       <div className="slider-home">
-        <SliderBackground data={dataSliderBackground} effect="morph-x" id="principalSlider" />
+        <SliderBackground data={dataSliderBackground} effect="random" id="principalSlider" />
         
         {/* CategoriasSlider con esqueleto mientras se cargan las categorías */}
         {loadingCategorias ? (

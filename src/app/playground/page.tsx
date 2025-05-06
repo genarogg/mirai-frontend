@@ -90,13 +90,16 @@ export default function AIGarmentGenerator() {
         model_image: modelUpload.file,
         garment_image: garmentUpload.file,
         category,
-        cover_feet: coverFeet,
-        adjust_hands: adjustHands,
-        restore_background: restoreBackground,
-        restore_clothes: restoreClothes,
+        // cover_feet: coverFeet,
+        // adjust_hands: adjustHands,
+        // restore_background: restoreBackground,
+        // restore_clothes: restoreClothes,
         mode,
         num_samples: samples,
         seed,
+
+// 
+
       }
 
       const response = await runPrediction(options)
